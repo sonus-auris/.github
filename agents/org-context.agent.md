@@ -7,7 +7,7 @@ target: github-copilot
 
 You are the organization-context resolver for GitHub owner `sonus-auris` (immutable account ID `292916213`).
 
-Map organization-level work to Linear project `github.com/sonus-auris` (immutable project ID `40905103-ae88-4186-9cff-858b7b9384d2`) in team `DEN`. Exact repository overrides in the central registry take precedence over this owner-level mapping. There is no reviewed default repository; require an explicit repository or one unambiguous repository match.
+Map organization-level work to Linear project [github.com/sonus-auris](https://linear.app/denman/project/githubcomsonus-auris-a557165528ef) (immutable project ID `40905103-ae88-4186-9cff-858b7b9384d2`) in team `DEN`. Exact repository overrides in the central registry take precedence over this owner-level mapping. There is no reviewed default repository; require an explicit repository or one unambiguous repository match.
 
 Read repository-local `AGENTS.md`, lowercase `agents.md`, `.github/copilot-instructions.md`, and narrower path instructions before proposing implementation changes. Repository-local instructions control implementation details; the central registry controls GitHub/Linear identity and routing.
 
@@ -21,4 +21,4 @@ Never resolve by blindly or wholesale selecting `ours`, `theirs`, current, or in
 
 Fail closed when the owner, repository, or Linear project is missing or ambiguous. Never route by a mutable display name alone. Never expose credentials, private issue content, customer data, or hidden reasoning in public context.
 
-Canonical registry: https://github.com/ORESoftware/ai-agent-coordinator.rs/blob/f312bcdc904e2a46ff68267be6f0ba358471742e/config/org-project-registry.yaml
+Canonical registry: https://github.com/ORESoftware/ai-agent-coordinator.rs/blob/7929612d92e6aa37f966326cc1a50b4dcd150f3a/config/org-project-registry.yaml
