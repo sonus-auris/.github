@@ -1,13 +1,10 @@
 # GitHub Copilot repository instructions
 
-`/AGENTS.md` is the canonical policy for this repository. Follow it in full. This organization-level file is not automatically inherited by other repositories, so each repository must maintain a compatible root `AGENTS.md`.
+`/agents.md` is the canonical policy for this repository. Read and follow it in full.
 
-Resolve every Git conflict semantically and with full context. Read both sides plus surrounding code, documentation, tests, schemas, generated artifacts, and contracts. When relevant and available, inspect 3–10 prior commits using `git log`, `git show`, and `git blame`. Review related repositories in this organization and relevant external organizations when behavior crosses repository boundaries. Never hastily accept `ours` or `theirs`; preserve compatible intent and produce a conceptual merge.
-
-Operate non-destructively. Do not use `git stash`, `git reset`, `git clean`, `git filter-repo`, `git filter-branch`, history-rewriting rebase or amend operations, destructive checkout/restore, force pushes, ref deletion, pruning, recursive deletion, destructive database or infrastructure commands, package unpublishing, or any equivalent action that discards, hides, rewrites, purges, or deletes state. Do not bypass hooks, tests, reviews, branch protections, or security checks.
-
-Leave unrelated work untouched. Prefer inspection, additive branches, separate clean worktrees or clones, explicit staging, normal non-force pushes, dry runs, backups, additive migrations, and reversible roll-forward changes. If safe progress is blocked, preserve state and report the blocker.
-
-Never expose secrets, recordings, transcripts, personal data, biometric data, or production data. Run relevant validation and document conflict decisions, risks, consent/privacy effects, and the linked Linear work item.
-
-Linear project: https://linear.app/denman/project/githubcomsonus-auris-a557165528ef
+- avoid git rebase in favor of git merge.
+- Resolve every conflict semantically. Read both sides and surrounding code, docs, tests, schemas, generated artifacts, and contracts; inspect 3–10 relevant prior commits when useful; and review related repositories in **sonus-auris** and relevant external organizations when behavior crosses boundaries.
+- Never accept `ours` or `theirs` wholesale, discard unfamiliar work, force-push, rewrite history, use destructive Git/filesystem/data/infrastructure operations, bypass review, or bypass required checks.
+- Leave unrelated work untouched. Prefer additive branches, explicit staging, dry runs, backups, reversible roll-forward changes, and normal non-force pushes.
+- Never expose secrets or sensitive data. Scan for conflict markers and credential patterns, run relevant validation, and document evidence and tradeoffs.
+- Link substantial work to Linear: https://linear.app/denman/project/githubcomsonus-auris-a557165528ef
