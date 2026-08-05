@@ -29,7 +29,7 @@
     "contains_non_public_inventory": true,
     "digest": "sha256:a53134ace60d222c86c80e46fbf90e44f7c5ec12593de76922d7f453d506d0f4",
     "path": "owners/sonus-auris.json",
-    "repository": "ORESoftware/project-registry"
+    "repository": "approved-private-registry"
   },
   "relationships": [
     {

@@ -28,7 +28,7 @@ Every desktop-facing change must inspect both canonical product apps, define sha
 
 - GitHub Project: [`sonus-auris-project` — Project 1](https://github.com/orgs/sonus-auris/projects/1)
 - Linear project: `github.com/sonus-auris`
-- Central registry: [`ORESoftware/project-registry`](https://github.com/ORESoftware/project-registry/blob/main/registry/desktop-applications.json)
+- Central registry: [`approved-private-registry`](private-registry://canonical/registry/desktop-applications.json)
 - Portfolio rollout: [`DEN-2469`](https://linear.app/denman/issue/DEN-2469/roll-out-paired-rust-flutter-desktop-repositories-across-the-portfolio)
 
 Renames, transfers, archival, platform-status changes, or changes to which Flutter app is canonical must update this document, Linear, the central registry, and all three repositories together.
