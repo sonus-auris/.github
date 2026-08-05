@@ -54,3 +54,11 @@ This profile and the `.github` repository are intentionally public. They may con
 
 GitHub owns code and delivery evidence; Linear owns planning and dependencies. The linked organization Project provides the cross-repository execution view.
 <!-- org-project-routing:end -->
+
+<!-- ore-org-baseline:begin -->
+This GitHub account maintains software, infrastructure, research, and supporting documentation under the [`sonus-auris`](https://github.com/sonus-auris) GitHub owner.
+
+Planning and delivery context is tracked in [github.com/sonus-auris](https://linear.app/denman/project/githubcomsonus-auris-a557165528ef). Public contribution, security, and governance defaults are maintained in [`.github`](https://github.com/sonus-auris/.github).
+
+Repository descriptions and repository-local documentation remain authoritative for each project. Do not infer production readiness, support commitments, or security guarantees from this profile alone.
+<!-- ore-org-baseline:end -->

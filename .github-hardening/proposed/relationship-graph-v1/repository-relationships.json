@@ -1,0 +1,121 @@
+{
+  "$schema": "./repository-relationships.schema.json",
+  "audience": "public",
+  "generated": {
+    "complete_for_visibility": "public",
+    "generated_at": "2026-08-05T21:07:32Z",
+    "generator_version": "2026-08-04.1",
+    "inventory_digest": "sha256:57452a8c9bc253960a25e6d6cd9c2fb9fdc6da14bfe2df74db9c3a9efcf03df1",
+    "managed_by": "ore-repository-relationship-rollout",
+    "omitted_repository_count": 12,
+    "private_repositories_omitted": true,
+    "source": "GitHub GraphQL repository inventory plus reviewed manual declarations"
+  },
+  "owner": {
+    "account_type": "organization",
+    "dotgithub_repository": "sonus-auris/.github",
+    "github_id": "292916213",
+    "linear_project": {
+      "id": "40905103-ae88-4186-9cff-858b7b9384d2",
+      "name": "github.com/sonus-auris",
+      "team_id": "eb8ab169-5afe-4b6f-9cab-3f2aa3e887dc",
+      "url": "https://linear.app/denman/project/githubcomsonus-auris-a557165528ef",
+      "workspace": "denman"
+    },
+    "login": "sonus-auris",
+    "mapping_id": "context:sonus-auris"
+  },
+  "private_registry": {
+    "contains_non_public_inventory": true,
+    "digest": "sha256:a53134ace60d222c86c80e46fbf90e44f7c5ec12593de76922d7f453d506d0f4",
+    "path": "owners/sonus-auris.json",
+    "repository": "ORESoftware/project-registry"
+  },
+  "relationships": [
+    {
+      "confidence": 1.0,
+      "evidence": [
+        {
+          "kind": "github-owner-membership",
+          "source": "GitHub GraphQL repository inventory"
+        }
+      ],
+      "from": "sonus-auris/.github",
+      "id": "sha256:71a308b6bb3f6aaebc145cbfefa91b67e62a24d5ccc2b726175aa78ad7bab9e1",
+      "notes": "Organization .github policy and community-health defaults govern this sibling repository.",
+      "required": true,
+      "scope": "organization",
+      "status": "declared",
+      "to": "sonus-auris/sonus-auris-site.web",
+      "type": "governs"
+    },
+    {
+      "confidence": 1.0,
+      "evidence": [
+        {
+          "kind": "github-owner-membership",
+          "source": "GitHub GraphQL repository inventory"
+        }
+      ],
+      "from": "sonus-auris/.github",
+      "id": "sha256:be062e7e705e1bc2ecaac8eaa0ed114e453d4c8452917ce2cc399e61403ddca8",
+      "notes": "Organization .github policy and community-health defaults govern this sibling repository.",
+      "required": true,
+      "scope": "organization",
+      "status": "declared",
+      "to": "sonus-auris/sonus-auris-ui.dart",
+      "type": "governs"
+    }
+  ],
+  "repositories": [
+    {
+      "archived": false,
+      "default_branch": "main",
+      "fork": false,
+      "full_name": "sonus-auris/.github",
+      "github_id": "1320444552",
+      "name": ".github",
+      "owner": "sonus-auris",
+      "roles": [
+        "community-health",
+        "governance",
+        "relationship-registry"
+      ],
+      "source": "github-graphql-api",
+      "url": "https://github.com/sonus-auris/.github",
+      "visibility": "public"
+    },
+    {
+      "archived": false,
+      "default_branch": "main",
+      "fork": false,
+      "full_name": "sonus-auris/sonus-auris-site.web",
+      "github_id": "1266688916",
+      "name": "sonus-auris-site.web",
+      "owner": "sonus-auris",
+      "roles": [
+        "repository"
+      ],
+      "source": "github-graphql-api",
+      "url": "https://github.com/sonus-auris/sonus-auris-site.web",
+      "visibility": "public"
+    },
+    {
+      "archived": false,
+      "default_branch": "main",
+      "fork": false,
+      "full_name": "sonus-auris/sonus-auris-ui.dart",
+      "github_id": "1266688683",
+      "name": "sonus-auris-ui.dart",
+      "owner": "sonus-auris",
+      "roles": [
+        "repository"
+      ],
+      "source": "github-graphql-api",
+      "url": "https://github.com/sonus-auris/sonus-auris-ui.dart",
+      "visibility": "public"
+    }
+  ],
+  "schema_version": 1,
+  "unresolved_hints": []
+}
