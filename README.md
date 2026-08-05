@@ -29,3 +29,28 @@ jobs:
 ```
 
 Repository-local policy may be stricter—particularly around audio consent, privacy, evidence integrity, encryption, retention, and app-store compliance—but must not weaken the organization baseline.
+
+<!-- ore-org-baseline:begin -->
+## Account-wide defaults
+
+This public repository is the canonical source for GitHub-supported fallback community files, organization profile content, reusable workflow examples, and public contributor guidance for [`sonus-auris`](https://github.com/sonus-auris).
+
+- GitHub owner: [`sonus-auris`](https://github.com/sonus-auris)
+- Linear project: [github.com/sonus-auris](https://linear.app/denman/project/githubcomsonus-auris-a557165528ef)
+- Public context: [`ORG_CONTEXT.md`](ORG_CONTEXT.md)
+- Canonical agent policy for this repository: [`agents.md`](agents.md)
+- Governance: [`GOVERNANCE.md`](GOVERNANCE.md)
+- Public repository graph: [`repository-relationships.json`](repository-relationships.json)
+- Relationship guide: [`docs/REPOSITORY_RELATIONSHIPS.md`](docs/REPOSITORY_RELATIONSHIPS.md)
+- Security reporting: [`SECURITY.md`](SECURITY.md)
+
+GitHub applies only its documented fallback community files automatically. Agent instructions, relationship files, and reusable workflows are **not copied into sibling repositories**; repositories that need local enforcement must carry their own lowercase `agents.md` and explicitly call or copy the provided workflow.
+
+`repository-relationships.json` retains the owner's existing contract. A generated public graph is staged under `.github-hardening/proposed/relationship-graph-v1/` for semantic compatibility review. It is public-safe: private repository names are omitted. The complete graph is synchronized separately to the approved private project registry.
+
+## Safety baseline
+
+Changes are pull-request driven. Contributors and agents must preserve concurrent work, avoid destructive Git operations, resolve conflicts semantically with full history and cross-repository context, validate affected contracts, and never claim a remote action completed without authoritative evidence.
+
+Generated baseline version: `2026-08-04`.
+<!-- ore-org-baseline:end -->
