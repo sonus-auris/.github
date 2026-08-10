@@ -2,11 +2,11 @@
 
 ## Reporting a vulnerability
 
-Do not disclose vulnerabilities, exploit details, credentials, recordings, transcripts, personal data, biometric data, or production data in a public issue, discussion, pull request, commit, or Linear comment.
+Do not open a public issue for suspected vulnerabilities. Do not disclose exploit details, credentials, recordings, transcripts, personal data, biometric data, or production data in a public issue, discussion, pull request, commit, or Linear comment.
 
 Use the affected repository's **Security** tab and private vulnerability-reporting flow when it is available. If private reporting is not enabled, contact the organization maintainers through a verified private channel shown on the organization or maintainer profile. Share only the minimum information needed to establish contact until a private channel is confirmed.
 
-Include the affected repository and version, impact, prerequisites, reproducible steps, and a minimal proof of concept using synthetic data. Maintainers should acknowledge, triage, remediate, validate, and coordinate disclosure before creating public follow-up work.
+Include the affected repository and version, impact, prerequisites, reproducible steps, and a minimal proof of concept using synthetic data. Do not access data beyond what is necessary to demonstrate the issue, disrupt production, or persist access. Maintainers should acknowledge, create or link a restricted Linear security issue, triage severity and affected versions, remediate, validate, and coordinate disclosure before creating public follow-up work.
 
 ## Handling sensitive material
 

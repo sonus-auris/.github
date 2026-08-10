@@ -6,7 +6,7 @@ Contributors must communicate respectfully, critique ideas rather than people, p
 
 Good-faith disagreement is welcome. Reviews should be specific, actionable, and proportionate. Conflict resolution must preserve contributor work and project intent; unfamiliar changes must not be deleted merely to simplify a merge. Audio, transcript, evidence, biometric, and user data must be handled with exceptional care.
 
-Report conduct concerns privately to organization maintainers through a verified private channel. Maintainers may edit or remove abusive content, limit participation, or take other proportionate action. Retaliation against good-faith reporters is prohibited.
+Report conduct concerns privately to organization maintainers through a verified private channel. Do not expose complainants, witnesses, private data, or sensitive evidence in public issues. Maintainers may edit or remove abusive content, limit participation, or take other proportionate action. Enforcement decisions should be documented privately, and retaliation against good-faith reporters is prohibited.
 
 <!-- ore-org-baseline:begin -->
 Participants must communicate professionally and in good faith. Harassment, threats, discriminatory abuse, deliberate disruption, doxxing, credential exposure, and publication of private or security-sensitive information are not acceptable.

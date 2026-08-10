@@ -1,7 +1,15 @@
 # Account-level `.github` agent instructions
 
 <!-- ore-org-baseline:begin -->
-These instructions apply to this repository. Repository-local instructions may add stricter requirements, but they must not weaken this baseline.
+These instructions are mandatory for human and automated contributors working in this repository. Treat them as organization-level context whenever work spans related repositories. Repository-local instructions may add stricter requirements, but they must not weaken this baseline.
+
+## Safe change control
+
+Preserve existing work and use reversible, reviewable operations.
+
+- **avoid git rebase in favor of git merge**
+- Inspect `git status --short --branch` before making changes and again before publishing them.
+- When unexpected worktree changes, ambiguous ownership, or a potentially destructive requirement is encountered, stop and report the condition. Do not hide it with a stash, reset, cleanup, or history rewrite.
 
 ## Canonical organization links
 
@@ -9,6 +17,16 @@ These instructions apply to this repository. Repository-local instructions may a
 - Public organization defaults: https://github.com/sonus-auris/.github
 - Canonical Linear project: https://linear.app/denman/project/githubcomsonus-auris-a557165528ef
 - Fleet tracking issue: https://github.com/ORESoftware/k8s-cluster/issues/1222
+
+## Mandatory Linear tracking
+
+Every discovered feature, fix, enhancement, bug, vulnerability, reliability concern, documentation gap, or technical-debt item must be represented by a Linear issue in the canonical project before implementation begins.
+
+1. Search Linear first and link the existing issue when one already covers the work.
+2. Create a new issue when no suitable issue exists.
+3. Include the Linear identifier or canonical Linear URL in every pull request and material implementation commit.
+4. Keep scope, acceptance criteria, validation evidence, dependencies, and final status synchronized between GitHub and Linear.
+5. If the GitHub-to-Linear mapping is missing or ambiguous, stop and report it rather than guessing or making an untracked drive-by change.
 
 ## Instruction discovery
 
@@ -39,8 +57,8 @@ Automated agents must **never execute or recommend** destructive, state-conceali
 
 The blacklist includes, without limitation:
 
-- every form of `git stash`, every mode of `git reset`, every mode of `git clean`, `git filter-repo`, `git filter-branch`, BFG, `git rebase`, interactive history rewriting, `git commit --amend`, commit replacement, destructive `git checkout -- <path>`, destructive `git restore`, `git branch -D`, ref or tag deletion, `git reflog expire`, `git gc --prune`, `git push --force`, and `git push --force-with-lease`;
-- recursive or bulk deletion and destructive filesystem mutation, including `rm -rf`, `find -delete`, truncation, shredding, destructive overwrite, formatting, and access-removing ownership or permission changes;
+- every form of `git stash`, every mode of `git reset`, every mode of `git clean`, `git filter-repo`, `git filter-branch`, BFG, `git rebase`, interactive history rewriting, `git commit --amend`, commit replacement, destructive `git checkout -- <path>`, destructive `git restore`, `git branch -D`, ref or tag deletion, `git reflog expire`, `git gc --prune`, `git push --force`, `git push -f`, and `git push --force-with-lease`;
+- destructive filesystem commands and recursive or bulk mutation, including `rm`, `mv`, `sed`, `find -delete`, `xargs rm`, truncation, shredding, destructive overwrite, formatting, and access-removing ownership or permission changes;
 - destructive data operations, including `DROP`, `TRUNCATE`, unbounded `DELETE`, destructive rollback, irreversible migration, bucket/object purge, queue/topic deletion, and bulk mutation without a bounded reversible plan;
 - destructive infrastructure or identity operations, including `kubectl delete`, `helm uninstall`, `terraform destroy`, `pulumi destroy`, cloud delete/purge calls, cluster or namespace teardown, and autonomous secret, key, certificate, credential, factor, or session revocation or rotation;
 - deleting repositories, worktrees, submodules, branches, tags, releases, packages, artifacts, registries, environments, evidence, audit logs, customer data, or production state;

@@ -1,16 +1,18 @@
 # GitHub Copilot repository instructions
 
-`/AGENTS.md` is the canonical policy for this repository. Follow it in full. This organization-level file is not automatically inherited by other repositories, so each repository must maintain a compatible root `AGENTS.md`.
+`/agents.md` is the canonical policy for this repository and `/AGENTS.md` is its aligned compatibility mirror. Follow the policy in full. Organization-level files are not automatically inherited by other repositories, so each repository must maintain a compatible root policy.
 
 Resolve every Git conflict semantically and with full context. Read both sides plus surrounding code, documentation, tests, schemas, generated artifacts, and contracts. When relevant and available, inspect 3–10 prior commits using `git log`, `git show`, and `git blame`. Review related repositories in this organization and relevant external organizations when behavior crosses repository boundaries. Never hastily accept `ours` or `theirs`; preserve compatible intent and produce a conceptual merge.
 
-Operate non-destructively. Do not use `git stash`, `git reset`, `git clean`, `git filter-repo`, `git filter-branch`, history-rewriting rebase or amend operations, destructive checkout/restore, force pushes, ref deletion, pruning, recursive deletion, destructive database or infrastructure commands, package unpublishing, or any equivalent action that discards, hides, rewrites, purges, or deletes state. Do not bypass hooks, tests, reviews, branch protections, or security checks.
+Operate non-destructively: **avoid git rebase in favor of git merge**. Preserve unfamiliar uncommitted and untracked work; stop and report unexpected changes or ambiguous ownership. Do not use `git stash`, `git reset`, `git clean`, `git filter-repo`, `git filter-branch`, history-rewriting rebase or amend operations, destructive checkout/restore, `git push --force`, `git push -f`, ref deletion, pruning, `rm`, `mv`, `sed`, recursive deletion, destructive database or infrastructure commands, package unpublishing, or any equivalent action that discards, hides, rewrites, purges, or deletes state. Do not bypass hooks, tests, reviews, branch protections, or security checks.
 
 Leave unrelated work untouched. Prefer inspection, additive branches, separate clean worktrees or clones, explicit staging, normal non-force pushes, dry runs, backups, additive migrations, and reversible roll-forward changes. If safe progress is blocked, preserve state and report the blocker.
 
 Never expose secrets, recordings, transcripts, personal data, biometric data, or production data. Run relevant validation and document conflict decisions, risks, consent/privacy effects, and the linked Linear work item.
 
 Linear project: https://linear.app/denman/project/githubcomsonus-auris-a557165528ef
+
+Every discovered feature, fix, enhancement, bug, vulnerability, reliability concern, documentation gap, or technical-debt item requires a canonical Linear issue before implementation. Search first, create only when needed, link the issue in every pull request and material implementation commit, keep scope and evidence synchronized, and fail closed when GitHub-to-Linear routing is missing or ambiguous.
 
 <!-- ore-org-baseline:begin -->
 These instructions apply to this repository. Repository-local instructions may add stricter requirements, but they must not weaken this baseline.
@@ -52,7 +54,7 @@ Automated agents must **never execute or recommend** destructive, state-conceali
 The blacklist includes, without limitation:
 
 - every form of `git stash`, every mode of `git reset`, every mode of `git clean`, `git filter-repo`, `git filter-branch`, BFG, `git rebase`, interactive history rewriting, `git commit --amend`, commit replacement, destructive `git checkout -- <path>`, destructive `git restore`, `git branch -D`, ref or tag deletion, `git reflog expire`, `git gc --prune`, `git push --force`, and `git push --force-with-lease`;
-- recursive or bulk deletion and destructive filesystem mutation, including `rm -rf`, `find -delete`, truncation, shredding, destructive overwrite, formatting, and access-removing ownership or permission changes;
+- destructive filesystem commands and recursive or bulk mutation, including `rm`, `mv`, `sed`, `find -delete`, `xargs rm`, truncation, shredding, destructive overwrite, formatting, and access-removing ownership or permission changes;
 - destructive data operations, including `DROP`, `TRUNCATE`, unbounded `DELETE`, destructive rollback, irreversible migration, bucket/object purge, queue/topic deletion, and bulk mutation without a bounded reversible plan;
 - destructive infrastructure or identity operations, including `kubectl delete`, `helm uninstall`, `terraform destroy`, `pulumi destroy`, cloud delete/purge calls, cluster or namespace teardown, and autonomous secret, key, certificate, credential, factor, or session revocation or rotation;
 - deleting repositories, worktrees, submodules, branches, tags, releases, packages, artifacts, registries, environments, evidence, audit logs, customer data, or production state;

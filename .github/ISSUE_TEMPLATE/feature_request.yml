@@ -1,7 +1,16 @@
 name: Feature request
 description: Propose a scoped, testable improvement
 title: "[Feature]: "
+labels: ["enhancement", "triage"]
 body:
+  - type: checkboxes
+    attributes:
+      label: Preflight
+      options:
+        - label: I searched existing issues, pull requests, and documentation.
+          required: true
+        - label: I removed credentials, private data, and customer information.
+          required: true
   - type: input
     id: repository
     attributes:
@@ -12,26 +21,39 @@ body:
   - type: textarea
     id: problem
     attributes:
-      label: Problem or opportunity
+      label: Problem, opportunity, and users affected
       description: Describe the user, privacy, operational, or developer need before proposing a solution.
     validations:
       required: true
   - type: textarea
     id: outcome
     attributes:
-      label: Desired outcome and acceptance criteria
+      label: Desired outcome
     validations:
       required: true
   - type: textarea
     id: proposal
     attributes:
-      label: Proposed approach
-      description: Include affected contracts, repositories, platforms, audio/data flows, consent, retention, encryption, migrations, infrastructure, and alternatives.
+      label: Proposed approach and behavior
+      description: Include affected contracts, repositories, platforms, audio/data flows, consent, retention, encryption, migrations, infrastructure, and operations.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      description: List observable completion and validation criteria.
+    validations:
+      required: true
   - type: textarea
     id: risks
     attributes:
       label: Risks and rollout
       description: Explain compatibility, privacy, consent, security, evidence-integrity, migration, observability, and reversible rollout considerations.
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives and tradeoffs
   - type: input
     id: linear
     attributes:

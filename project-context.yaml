@@ -11,7 +11,7 @@
     "raw_url": "https://raw.githubusercontent.com/ORESoftware/ai-agent-coordinator.rs/d3e03ecc2e175a7f6261523d35c73ac775c49942/config/org-project-registry.yaml"
   },
   "composition": {
-    "strategy": "semantic_merge_from_current_main_and_DEN-629",
+    "strategy": "semantic_merge_from_current_main_DEN-629_context_and_policy_validation",
     "preserved_current_main_files": [
       "README.md",
       "profile/README.md",
@@ -21,8 +21,15 @@
       ".github/ISSUE_TEMPLATE/feature_request.yml",
       ".github/ISSUE_TEMPLATE/config.yml"
     ],
-    "reason": "Preserve the newer Sonus Auris privacy, consent, evidence-integrity, retention, encryption, and non-destructive safety guidance instead of overwriting it with an older generated mirror.",
-    "local_integrity_workflow": ".github/workflows/baseline-policy.yml"
+    "reason": "Preserve the newer Sonus Auris privacy, consent, evidence-integrity, retention, encryption, and non-destructive safety guidance while integrating the DEN-629 generated context and dependency-free policy validation contracts.",
+    "local_integrity_workflow": ".github/workflows/baseline-policy.yml",
+    "integrated_policy_validation_files": [
+      "organization-policy.json",
+      "scripts/validate_semantic_conflict_policy.py",
+      "tests/test_validate_semantic_conflict_policy.py",
+      ".github/workflows/semantic-conflict-policy.yml",
+      ".github/workflows/reusable-organization-policy.yml"
+    ]
   },
   "github": {
     "login": "sonus-auris",

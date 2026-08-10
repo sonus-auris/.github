@@ -1,11 +1,11 @@
 <!-- ore-org-baseline:begin -->
 ## Summary
 
-Describe the behavior and intent, not only the files changed.
+Describe the behavior, intent, affected repositories or contracts, and user or operator impact—not only the files changed.
 
 ## Planning and dependencies
 
-- Linear project or issue: [github.com/sonus-auris](https://linear.app/denman/project/githubcomsonus-auris-a557165528ef)
+- Linear project or issue (required, for example `DEN-123`): [github.com/sonus-auris](https://linear.app/denman/project/githubcomsonus-auris-a557165528ef)
 - Related GitHub issues or pull requests:
 - Related repositories or external contracts:
 
@@ -20,13 +20,27 @@ Describe the behavior and intent, not only the files changed.
 
 List exact commands, environments, and results. Include unit, integration, contract, build, and end-to-end evidence as applicable.
 
-## Conflict-resolution record
+## Safe-change checklist
 
+- [ ] Scope, acceptance criteria, dependencies, and validation evidence are synchronized with the canonical Linear issue.
+- [ ] The worktree was inspected before mutation and publishing; unfamiliar, uncommitted, and untracked work was preserved.
+- [ ] I followed **avoid git rebase in favor of git merge** and did not rewrite shared history.
+- [ ] No prohibited destructive Git or filesystem command, force-push, check bypass, or security-control disablement was used.
+- [ ] Newly discovered features, fixes, bugs, vulnerabilities, reliability concerns, documentation gaps, and technical debt have linked Linear issues.
 - [ ] Remote state was fetched before editing and before pushing.
-- [ ] Concurrent work was preserved; no destructive operation or history rewrite was used.
-- [ ] Conflicts, if any, were resolved semantically using the merge base, both sides, 3–10 relevant commits, tests, contracts, linked work, and related repositories.
+
+## Semantic conflict-resolution checklist
+
+Resolve conflicts semantically and with full context; never clear conflict markers by hastily selecting a side.
+
+- [ ] The merge base, both sides, surrounding implementation or documentation, and affected tests and contracts were inspected.
+- [ ] When history was available, 3–10 relevant commits from both sides were reviewed with path-scoped history and blame where useful.
+- [ ] Related Sonus Auris repositories and relevant external-organization repositories were reviewed for cross-repository APIs, schemas, generated artifacts, infrastructure, or behavior.
+- [ ] A conceptual merge preserved compatible intent; neither `ours`/current nor `theirs`/incoming content was accepted wholesale.
 - [ ] The complete worktree was scanned for unresolved conflict markers.
-- [ ] No `ours`/`theirs` side was accepted wholesale without conceptual review.
+- [ ] Affected tests and validation checks were run after resolving conflicts.
+- [ ] Non-obvious decisions, incompatible requirements, discarded intent, and operational tradeoffs were documented in GitHub and Linear.
+- [ ] No credentials, private data, or customer information were exposed while gathering context.
 
 ## Final checklist
 

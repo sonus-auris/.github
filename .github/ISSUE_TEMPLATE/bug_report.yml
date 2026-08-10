@@ -1,11 +1,20 @@
 name: Bug report
 description: Report a reproducible defect without sensitive audio or data
 title: "[Bug]: "
+labels: ["bug", "triage"]
 body:
   - type: markdown
     attributes:
       value: |
         Do not include vulnerabilities, credentials, recordings, transcripts, evidence, personal data, biometric data, or production data. Use synthetic fixtures and the private security-reporting process when appropriate.
+  - type: checkboxes
+    attributes:
+      label: Preflight
+      options:
+        - label: I searched existing issues and documentation.
+          required: true
+        - label: This is not a security vulnerability; security reports follow SECURITY.md.
+          required: true
   - type: input
     id: repository
     attributes:
@@ -30,7 +39,8 @@ body:
   - type: textarea
     id: reproduction
     attributes:
-      label: Reproduction steps using synthetic data
+      label: Minimal reproduction using synthetic data
+      description: Provide deterministic steps and the smallest safe example.
       placeholder: |
         1. ...
         2. ...
@@ -44,10 +54,18 @@ body:
     validations:
       required: true
   - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+    validations:
+      required: true
+  - type: textarea
     id: environment
     attributes:
-      label: Environment
-      description: OS, device, permissions, runtime, deployment target, relevant configuration, and sanitized logs.
+      label: Environment and diagnostics
+      description: Include OS, device, permissions, runtime, deployment target, relevant configuration, and sanitized logs.
+    validations:
+      required: true
   - type: checkboxes
     id: safety
     attributes:

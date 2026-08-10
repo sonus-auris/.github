@@ -90,7 +90,10 @@ class BaselineValidatorTests(unittest.TestCase):
             ]
         )
         write(self.root, "agents.md", agents)
-        write(self.root, "AGENTS.md", VALIDATOR.MANDATORY_DIRECTIVE + "\n")
+        # The uppercase compatibility path must contain the same policy. Keeping
+        # the bytes aligned also makes this fixture valid on case-insensitive
+        # filesystems where AGENTS.md and agents.md resolve to one file.
+        write(self.root, "AGENTS.md", agents)
         for relative in VALIDATOR.POINTER_FILES:
             write(self.root, relative, "Read canonical agents.md before changing files.\n")
         write(

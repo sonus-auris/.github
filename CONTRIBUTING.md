@@ -5,18 +5,27 @@ Thank you for contributing to sonus-auris.
 ## Before starting
 
 1. Read [`AGENTS.md`](AGENTS.md), [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md), and [`SECURITY.md`](SECURITY.md).
-2. Find or create the relevant work item in the [sonus-auris Linear project](https://linear.app/denman/project/githubcomsonus-auris-a557165528ef).
+2. Search for and link the relevant work item in the [sonus-auris Linear project](https://linear.app/denman/project/githubcomsonus-auris-a557165528ef), creating one only when no suitable issue exists. Every discovered feature, fix, enhancement, bug, vulnerability, reliability concern, documentation gap, or technical-debt item must be tracked before implementation begins.
 3. Confirm the affected repositories, audio/data contracts, generated artifacts, infrastructure, supported platforms, retention behavior, consent requirements, and deployment boundaries.
 
 ## Non-destructive workflow
 
-Leave unrelated and uncommitted work untouched. Agents and automated contributors must not use `git stash`, `git reset`, `git clean`, `git filter-repo`, history rewrites, force pushes, recursive deletion, destructive database or infrastructure commands, or equivalent operations. Use additive branches, clean worktrees or clones, explicit staging, normal pushes, dry runs, and reversible roll-forward changes.
+Leave unrelated, uncommitted, and untracked work untouched. Inspect the worktree before mutation and publishing; stop and report unexpected changes or ambiguous ownership. **Avoid git rebase in favor of git merge.** Agents and automated contributors must not use `git rebase`, `git stash`, `git reset`, `git clean`, `git filter-repo`, `git checkout --`, `git restore`, `git branch -D`, `git reflog expire`, `git gc --prune`, `git push --force`, `git push -f`, or other history-rewriting and force-push operations. They also must not use `rm`, `mv`, `sed`, `find -delete`, `xargs rm`, `truncate`, `shred`, `dd`, recursive deletion, destructive database or infrastructure commands, or equivalent operations. Use additive branches, clean worktrees or clones, explicit staging, normal pushes, targeted patch operations, dry runs, and reversible roll-forward changes.
 
 Never destroy or rewrite recordings, transcripts, evidence metadata, encryption material, or user data to simplify development or testing. Use synthetic fixtures and isolated test storage.
 
 ## Conflicts
 
-Resolve every conflict semantically. Read both sides and the surrounding subsystem; inspect 3–10 relevant prior commits when useful; review related organization and external repositories when contracts cross boundaries; preserve compatible intent; run relevant validation; and explain tradeoffs in the pull request.
+Resolve every conflict semantically and with full context. Conflict markers are the starting point for analysis, not the complete context.
+
+1. Inspect the merge base, both complete sides, surrounding code or documentation, tests, schemas, migrations, generated artifacts, deployment configuration, and contracts.
+2. When history is available, inspect 3–10 relevant commits from both sides using path-scoped `git log`, `git show`, and `git blame` where useful.
+3. Review related repositories in this GitHub organization and relevant external organizations whenever APIs, shared libraries, generated artifacts, infrastructure, deployments, or documentation cross repository boundaries.
+4. Never accept `ours`, `theirs`, current, or incoming wholesale merely to clear the conflict. Preserve compatible intent and produce a conceptual merge.
+5. Scan the complete worktree for unresolved conflict markers. Run all affected tests, formatters, linters, builds, integrity checks, contract checks, security checks, and end-to-end validation.
+6. Document non-obvious choices, incompatible requirements, discarded intent, and operational tradeoffs in the commit, pull-request description, and Linear issue.
+
+Full context means all relevant context the contributor is authorized to access. It never authorizes disclosure of credentials, private data, or customer information.
 
 ## Pull requests
 
