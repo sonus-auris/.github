@@ -6,7 +6,9 @@
     "ref": "d3e03ecc2e175a7f6261523d35c73ac775c49942",
     "ref_type": "commit",
     "immutable": true,
-    "canonical_sha256": "ded5ed46190521e978b85dfb8a6d63d2480536b52d9b3c5bfd1bb399f94c0a9d"
+    "canonical_sha256": "ded5ed46190521e978b85dfb8a6d63d2480536b52d9b3c5bfd1bb399f94c0a9d",
+    "url": "https://github.com/ORESoftware/ai-agent-coordinator.rs/blob/d3e03ecc2e175a7f6261523d35c73ac775c49942/config/org-project-registry.yaml",
+    "raw_url": "https://raw.githubusercontent.com/ORESoftware/ai-agent-coordinator.rs/d3e03ecc2e175a7f6261523d35c73ac775c49942/config/org-project-registry.yaml"
   },
   "composition": {
     "strategy": "semantic_merge_from_current_main_and_DEN-629",
@@ -82,6 +84,8 @@
     "github_custom_agent": "agents/org-context.agent.md",
     "github_policy_workflow": ".github/workflows/baseline-policy.yml",
     "repository_baseline": "policies/REPOSITORY_BASELINE.md",
+    "github_integrity_workflow": ".github/workflows/org-context-integrity.yml",
+    "bundle_manifest": "org-context-manifest.json",
     "linear_document_title": "AI Agent Context",
     "linear_marker": "org-project-context:v1"
   },

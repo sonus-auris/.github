@@ -1,0 +1,14 @@
+{
+  "files": {
+    ".github/workflows/org-context-integrity.yml": "799f56e9aebaea32749cb0c137ebff593524aacf0d5474669b4eba34a4cb406a",
+    "README.md": "664baa22f4f2e6436a6b53ca782d8aac4e56ccb8278f353855f9fa5d10fa058f",
+    "agents/org-context.agent.md": "05777457647faac0c0547eb31745ff2e72c8ec40ac9063c9f5a1a0edf13b1109",
+    "profile/README.md": "cd9a9c9f81453bba4d4830edbd06213f6f1a2dfec0988375c083d0a4c9dbf3f4",
+    "project-context.yaml": "14612baea2dc1621e3b4136f4ab7af413eb2c6e610e9a43a9c68de0c7e67cee6"
+  },
+  "github_account_id": 292916213,
+  "github_owner": "sonus-auris",
+  "registry_ref": "d3e03ecc2e175a7f6261523d35c73ac775c49942",
+  "registry_sha256": "ded5ed46190521e978b85dfb8a6d63d2480536b52d9b3c5bfd1bb399f94c0a9d",
+  "schema_version": 1
+}

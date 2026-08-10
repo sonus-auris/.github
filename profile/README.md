@@ -29,6 +29,7 @@ This page is the public orientation point for people and authorized AI agents. R
 - Immutable Linear project ID: `40905103-ae88-4186-9cff-858b7b9384d2`
 - Linear team: `DEN` (`eb8ab169-5afe-4b6f-9cab-3f2aa3e887dc`)
 - Organization defaults and public policies: [`sonus-auris/.github`](https://github.com/sonus-auris/.github)
+- Immutable central registry: [`ORESoftware/ai-agent-coordinator.rs/config/org-project-registry.yaml@d3e03ecc`](https://github.com/ORESoftware/ai-agent-coordinator.rs/blob/d3e03ecc2e175a7f6261523d35c73ac775c49942/config/org-project-registry.yaml)
 
 The reviewed central registry is authoritative for GitHub/Linear identity and routing. Repository-local instructions are authoritative for builds, tests, architecture, migrations, and implementation. Missing or contradictory context must be reported and resolved; it must not be invented.
 

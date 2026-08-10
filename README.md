@@ -8,6 +8,17 @@ This public `.github` repository is the canonical home for sonus-auris organizat
 - Canonical agent policy: [`AGENTS.md`](AGENTS.md)
 - Copilot mirror: [`.github/copilot-instructions.md`](.github/copilot-instructions.md)
 
+## Generated organization context bundle
+
+The reviewed central registry identified by the immutable commit in [`project-context.yaml`](project-context.yaml) is the source of truth for the generated, public-safe organization context. These managed artifacts must not be edited independently:
+
+- `project-context.yaml` records the GitHub owner ↔ Linear project mapping and registry provenance.
+- `org-context-manifest.json` records deterministic SHA-256 hashes for every other managed file.
+- `agents/org-context.agent.md` provides the organization-level GitHub Copilot custom-agent profile.
+- `.github/workflows/org-context-integrity.yml` verifies this mirror against the immutable central registry commit.
+
+The generated profile and custom-agent context carry the mandatory semantic Git conflict-resolution policy described below.
+
 ## Mandatory operating policy
 
 All contributors and agents must resolve Git conflicts semantically and with full context, normally reviewing 3–10 relevant prior commits when useful and inspecting related repositories across this organization and relevant external organizations. Never hastily choose `ours` or `theirs`; preserve compatible intent and validate the conceptual merge.
