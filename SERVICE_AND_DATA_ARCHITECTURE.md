@@ -143,7 +143,9 @@ Runtime roles should be separately provisioned from a centrally registered names
 <db_namespace>__migrator
 ```
 
-The exact namespace is recorded in `k8s-libs-and-shared-defs`; repositories must not invent independent truncation or alias rules.
+The default application namespace derives organization and project slugs as lowercase snake case joined by a double underscore: `<org_slug>__<project_slug>`. Runtime roles append capability suffixes such as `__api_rw`, `__web_ro`, `__web_state_rw`, or `__migrator`. The exact namespace is recorded in `k8s-libs-and-shared-defs`; when PostgreSQL identifier limits require shortening, only the centrally registered mapping may be used. Repositories must not invent independent truncation or alias rules.
+
+Application tables, views, functions, types, sequences, migration history, and generated ORM metadata live in the project-owned namespace rather than `public`. Runtime `search_path` is pinned to `pg_catalog` plus the single owned namespace, and migrations and shared queries schema-qualify application objects. Cross-organization foreign keys, direct joins, views, and shared write tables are prohibited by default; cross-project interaction uses an API, event, or explicitly versioned data contract unless a reviewed ADR grants a narrower exception.
 
 The API runtime role gets only required DML and no broad DDL. The web read role gets schema `USAGE` plus an explicit `SELECT` allowlist. The migrator gets project-scoped DDL only during the release job. Role switching between these principals is denied.
 
