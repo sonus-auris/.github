@@ -18,7 +18,7 @@ Lowercase `agents.md` is canonical. Read every applicable lowercase `agents.md` 
 
 Inspect the current branch, complete working tree, remotes, default branch, open pull requests, linked GitHub issues, linked Linear work, repository documentation, tests, schemas, generated artifacts, deployment definitions, and relevant related repositories. Preserve every unfamiliar or uncommitted change.
 
-Use read-only inspection and non-pruning synchronization such as `git status --short --branch`, `git remote -v`, `git fetch --all`, `git diff`, `git log`, `git show`, and `git blame`. Never treat a dirty worktree or inconvenient branch as permission to discard state.
+Use read-only inspection and non-pruning synchronization such as `git status --short --branch`, `git remote -v`, `git fetch --all`, `git diff`, `git log`, `git show`, and `git blame`. Never treat a dirty worktree or inconvenient branch as permission to discard state. Avoid git rebase in favor of git merge.
 
 ## Mandatory semantic conflict resolution
 
@@ -27,9 +27,9 @@ Use read-only inspection and non-pruning synchronization such as `git status --s
 For every conflict:
 
 1. Read the merge base, both complete sides, surrounding implementation, tests, schemas, generated artifacts, documentation, deployment configuration, and public contracts—not only conflict markers.
-2. Inspect the affected path history and normally review 3–10 relevant commits on each side with `git log`, `git show`, and `git blame` where useful.
+2. Inspect the affected path history and normally review 3–10 relevant prior commits on each side with `git log`, `git show`, and `git blame` where useful.
 3. Review linked pull requests, issues, Linear work, related repositories in `sonus-auris`, and relevant external-organization repositories whenever behavior or contracts cross boundaries.
-4. Preserve compatible intent and invariants from both sides. Synthesize a conceptual merge; never resolve by selecting `ours`, `theirs`, `current`, or `incoming` wholesale.
+4. Preserve compatible intent and invariants from both sides. Synthesize a conceptual merge; never resolve by accepting `ours` or `theirs` wholesale, nor by selecting `current` or `incoming` wholesale.
 5. Scan the complete tree for unresolved markers and run the applicable formatter, linter, unit, integration, contract, build, security, and end-to-end checks.
 6. Document incompatible requirements, intentional choices, and any discarded intent in the commit and pull-request description.
 
@@ -62,7 +62,7 @@ Never print, log, commit, paste into issues, include in fixtures, or expose toke
 
 ## Pull requests, validation, and evidence
 
-Use focused branches and pull requests. Link the relevant Linear issue or project. Explain behavior, risks, migration and roll-forward considerations, security impact, tests run, conflicts and their semantic resolution, and cross-repository dependencies. Never report a branch, commit, pull request, merge, deployment, test run, or external update as complete without authoritative remote evidence.
+Use focused branches and pull requests. Link the relevant Linear issue or project. Explain behavior, risks, migration and roll-forward considerations, security impact, tests run, conflicts and their semantic resolution, and cross-repository dependencies. Require authoritative evidence from the relevant remote system. Never report a branch, commit, pull request, merge, deployment, test run, or external update as complete without that evidence.
 <!-- ore-org-baseline:end -->
 
 <!-- ore-primary-branch-policy:begin -->
