@@ -47,10 +47,9 @@ jobs:
         run: |
           set -euo pipefail
           context_tmp="$(mktemp -d)"
-          trap 'rm -rf "$context_tmp"' EXIT
           raw_base="https://raw.githubusercontent.com/$REGISTRY_REPOSITORY/$REGISTRY_REF"
           mkdir -p "$context_tmp/config" "$context_tmp/scripts" "$context_tmp/rendered"
-          for path in \
+          for relative_file in \
             config/org-project-registry.yaml \
             scripts/render_org_project_context.py \
             scripts/render_org_repository_relationships.py \
@@ -59,7 +58,7 @@ jobs:
               --proto '=https' --tlsv1.2 \
               --retry 3 --retry-all-errors \
               --connect-timeout 10 --max-time 30 \
-              "$raw_base/$path" --output "$context_tmp/$path"
+              "$raw_base/$relative_file" --output "$context_tmp/$relative_file"
           done
           python3 -m py_compile "$context_tmp"/scripts/*.py
           python3 "$context_tmp/scripts/render_org_repository_relationships.py" \
