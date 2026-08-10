@@ -10,6 +10,11 @@ This public `.github` repository is the canonical home for **sonus-auris** organ
 - Copilot instructions: [`.github/copilot-instructions.md`](.github/copilot-instructions.md)
 - Portable validator: [`scripts/validate-agent-policy.sh`](scripts/validate-agent-policy.sh)
 
+## Canonical service/data architecture
+
+- [`*-lib-core` data plane and Rust web/API boundary](LIB_CORE_AND_SERVICE_BOUNDARIES.md)
+- [Full service and data architecture](SERVICE_AND_DATA_ARCHITECTURE.md)
+
 ## Mandatory operating policy
 
 All contributors and agents must resolve Git conflicts semantically and with full context, normally reviewing 3–10 relevant prior commits when useful and inspecting related repositories across this organization and relevant external organizations. Never hastily choose `ours` or `theirs`; preserve compatible intent and validate the conceptual merge.
