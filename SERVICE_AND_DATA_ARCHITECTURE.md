@@ -1,7 +1,7 @@
 # Rust Web Server vs API Server Architecture Plan
 
-Status: **adopted; audited and revised 2026-08-08**  
-Applies to: `fiducia-cloud`, `sonus-auris`, and `zed-pkg`; this document is mirrored in each organization’s `.github` repository and corresponding Linear project.  
+Status: **adopted; audited and revised 2026-08-08**
+Applies to: `fiducia-cloud`, `sonus-auris`, and `zed-pkg`; this document is mirrored in each organization’s `.github` repository and corresponding Linear project.
 Tracking: **DEN-3033** (cross-org conformance), **DEN-3043** (fleet linter), **DEN-2787 / DEN-2788 / DEN-2789** (organization rollouts), **DEN-2785** (shared-definitions segmentation), **DEN-2786** (ownership-aware naming).
 
 ## Executive decision
