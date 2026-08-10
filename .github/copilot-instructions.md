@@ -4,7 +4,7 @@
 
 Resolve every Git conflict semantically and with full context. Read both sides plus surrounding code, documentation, tests, schemas, generated artifacts, and contracts. When relevant and available, inspect 3–10 prior commits using `git log`, `git show`, and `git blame`. Review related repositories in this organization and relevant external organizations when behavior crosses repository boundaries. Never hastily accept `ours` or `theirs`; preserve compatible intent and produce a conceptual merge.
 
-Operate non-destructively: **avoid git rebase in favor of git merge**. Preserve unfamiliar uncommitted and untracked work; stop and report unexpected changes or ambiguous ownership. Do not use `git stash`, `git reset`, `git clean`, `git filter-repo`, `git filter-branch`, history-rewriting rebase or amend operations, destructive checkout/restore, `git push --force`, `git push -f`, ref deletion, pruning, `rm`, `mv`, `sed`, recursive deletion, destructive database or infrastructure commands, package unpublishing, or any equivalent action that discards, hides, rewrites, purges, or deletes state. Do not bypass hooks, tests, reviews, branch protections, or security checks.
+Operate non-destructively: **avoid git rebase in favor of git merge.** Preserve unfamiliar uncommitted and untracked work; stop and report unexpected changes or ambiguous ownership. Do not use `git stash`, `git reset`, `git clean`, `git filter-repo`, `git filter-branch`, history-rewriting rebase or amend operations, destructive checkout/restore, `git push --force`, `git push -f`, ref deletion, pruning, `rm`, `mv`, `sed`, recursive deletion, destructive database or infrastructure commands, package unpublishing, or any equivalent action that discards, hides, rewrites, purges, or deletes state. Do not bypass hooks, tests, reviews, branch protections, or security checks.
 
 Leave unrelated work untouched. Prefer inspection, additive branches, separate clean worktrees or clones, explicit staging, normal non-force pushes, dry runs, backups, additive migrations, and reversible roll-forward changes. If safe progress is blocked, preserve state and report the blocker.
 
@@ -77,4 +77,6 @@ Never print, log, commit, paste into issues, include in fixtures, or expose toke
 ## Pull requests, validation, and evidence
 
 Use focused branches and pull requests. Link the relevant Linear issue or project. Explain behavior, risks, migration and roll-forward considerations, security impact, tests run, conflicts and their semantic resolution, and cross-repository dependencies. Never report a branch, commit, pull request, merge, deployment, test run, or external update as complete without authoritative remote evidence.
+
+Scan the complete worktree for unresolved conflict markers and credential patterns. GitHub Actions must use least-privilege permissions, explicit timeouts, concurrency cancellation where appropriate, checkout without persisted credentials, and immutable full-commit action pins.
 <!-- ore-org-baseline:end -->

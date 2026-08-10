@@ -1,4 +1,4 @@
-name: Agent policy
+name: Agent policy reusable check
 
 on:
   workflow_call:
@@ -8,7 +8,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: agent-policy-${{ github.workflow }}-${{ github.ref }}
+  group: sonus-auris-agent-policy-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -20,6 +20,7 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
+          fetch-depth: 0
 
       - name: Verify required agent-safety declarations
         shell: bash
@@ -66,3 +67,11 @@ jobs:
           done
 
           echo "Agent policy baseline is present."
+
+      - name: Validate policy, workflow pins, conflict markers, and credential patterns
+        shell: bash
+        run: bash scripts/validate-agent-policy.sh
+
+      - name: Exercise fail-closed validator fixtures
+        shell: bash
+        run: bash tests/agent-policy-validator.sh

@@ -1,13 +1,13 @@
-# Account-level `.github` agent instructions
+# Organization-wide agent instructions
 
 <!-- ore-org-baseline:begin -->
-These instructions are mandatory for human and automated contributors working in this repository. Treat them as organization-level context whenever work spans related repositories. Repository-local instructions may add stricter requirements, but they must not weaken this baseline.
+Lowercase `agents.md` is the canonical public agent-safety policy for Sonus Auris, and uppercase `AGENTS.md` is its byte-aligned compatibility mirror. These instructions are mandatory for human and automated contributors working in this repository and are the minimum policy every organization repository must mirror or replace with a stricter equivalent. An organization `.github/agents.md` is not automatically inherited by sibling repositories or coding agents.
 
 ## Safe change control
 
 Preserve existing work and use reversible, reviewable operations.
 
-- **avoid git rebase in favor of git merge**
+- **avoid git rebase in favor of git merge.**
 - Inspect `git status --short --branch` before making changes and again before publishing them.
 - When unexpected worktree changes, ambiguous ownership, or a potentially destructive requirement is encountered, stop and report the condition. Do not hide it with a stash, reset, cleanup, or history rewrite.
 
@@ -30,7 +30,7 @@ Every discovered feature, fix, enhancement, bug, vulnerability, reliability conc
 
 ## Instruction discovery
 
-Lowercase `agents.md` is canonical. Read every applicable lowercase `agents.md` from the repository root toward the current working directory before editing. Uppercase `AGENTS.md` and provider-specific instruction files are compatibility mirrors and must remain aligned with the applicable lowercase policy.
+Resolve the current working directory, walk upward to the filesystem root, and read every readable lowercase `agents.md` on that ancestor chain in root-to-leaf order. Do not search sibling directories. Report unreadable instruction files rather than silently ignoring them. Uppercase `AGENTS.md` and provider-specific instruction files are compatibility mirrors and must remain aligned with the applicable lowercase policy.
 
 ## Inspect before editing
 
@@ -45,9 +45,9 @@ Use read-only inspection and non-pruning synchronization such as `git status --s
 For every conflict:
 
 1. Read the merge base, both complete sides, surrounding implementation, tests, schemas, generated artifacts, documentation, deployment configuration, and public contracts—not only conflict markers.
-2. Inspect the affected path history and normally review 3–10 relevant commits on each side with `git log`, `git show`, and `git blame` where useful.
+2. Inspect the affected path history and normally review 3–10 relevant commits on each side with `git log`, `git show`, and `git blame` where useful. This history window means 3–10 relevant prior commits when that history is available.
 3. Review linked pull requests, issues, Linear work, related repositories in `sonus-auris`, and relevant external-organization repositories whenever behavior or contracts cross boundaries.
-4. Preserve compatible intent and invariants from both sides. Synthesize a conceptual merge; never resolve by selecting `ours`, `theirs`, `current`, or `incoming` wholesale.
+4. Preserve compatible intent and invariants from both sides. Synthesize a conceptual merge instead of accepting `ours` or `theirs` wholesale; never select current or incoming content wholesale either.
 5. Scan the complete tree for unresolved markers and run the applicable formatter, linter, unit, integration, contract, build, security, and end-to-end checks.
 6. Document incompatible requirements, intentional choices, and any discarded intent in the commit and pull-request description.
 
@@ -80,5 +80,7 @@ Never print, log, commit, paste into issues, include in fixtures, or expose toke
 
 ## Pull requests, validation, and evidence
 
-Use focused branches and pull requests. Link the relevant Linear issue or project. Explain behavior, risks, migration and roll-forward considerations, security impact, tests run, conflicts and their semantic resolution, and cross-repository dependencies. Never report a branch, commit, pull request, merge, deployment, test run, or external update as complete without authoritative remote evidence.
+Use focused branches and pull requests. Link the relevant Linear issue or project. Explain behavior, risks, migration and roll-forward considerations, security impact, tests run, conflicts and their semantic resolution, and cross-repository dependencies. Never report a branch, commit, pull request, merge, deployment, test run, or external update as complete without authoritative evidence from the remote system.
+
+GitHub Actions must use least-privilege permissions, explicit timeouts, concurrency cancellation where appropriate, checkout without persisted credentials, and immutable full-commit action pins. Dependency updates must remain reviewable and reproducible.
 <!-- ore-org-baseline:end -->
