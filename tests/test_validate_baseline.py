@@ -84,7 +84,7 @@ class BaselineValidatorTests(unittest.TestCase):
                 "git reset",
                 "git clean",
                 "git filter-repo",
-                "review 3–10 relevant commits",
+                "review 3–10 relevant prior commits",
                 "Never report completion without evidence",
                 "",
             ]
@@ -114,6 +114,19 @@ class BaselineValidatorTests(unittest.TestCase):
         self.assertTrue(any(needle in error for error in errors), errors)
 
     def test_valid_fixture_passes(self) -> None:
+        self.assertEqual([], VALIDATOR.validate(self.root))
+
+    def test_agent_phrases_are_case_insensitive(self) -> None:
+        path = self.root / "agents.md"
+        text = path.read_text(encoding="utf-8")
+        path.write_text(
+            text.replace(
+                "avoid git rebase in favor of git merge",
+                "Avoid git rebase in favor of git merge",
+                1,
+            ),
+            encoding="utf-8",
+        )
         self.assertEqual([], VALIDATOR.validate(self.root))
 
     def test_missing_required_file_fails(self) -> None:
