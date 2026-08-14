@@ -89,8 +89,11 @@ class BaselineValidatorTests(unittest.TestCase):
                 "",
             ]
         )
-        write(self.root, "agents.md", agents)
+        # Write the uppercase compatibility path first. On the default macOS
+        # case-insensitive filesystem it aliases agents.md, so the canonical
+        # lowercase content must be written last for this portable fixture.
         write(self.root, "AGENTS.md", VALIDATOR.MANDATORY_DIRECTIVE + "\n")
+        write(self.root, "agents.md", agents)
         for relative in VALIDATOR.POINTER_FILES:
             write(self.root, relative, "Read canonical agents.md before changing files.\n")
         write(
