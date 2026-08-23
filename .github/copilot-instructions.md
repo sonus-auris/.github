@@ -54,7 +54,7 @@ Automated agents must **never execute or recommend** destructive, state-conceali
 The blacklist includes, without limitation:
 
 - every form of `git stash`, every mode of `git reset`, every mode of `git clean`, `git filter-repo`, `git filter-branch`, BFG, `git rebase`, interactive history rewriting, `git commit --amend`, commit replacement, destructive `git checkout -- <path>`, destructive `git restore`, `git branch -D`, ref or tag deletion, `git reflog expire`, `git gc --prune`, `git push --force`, and `git push --force-with-lease`;
-- destructive filesystem commands and recursive or bulk mutation, including `rm`, `mv`, `sed`, `find -delete`, `xargs rm`, truncation, shredding, destructive overwrite, formatting, and access-removing ownership or permission changes;
+- destructive filesystem commands and recursive or bulk mutation, including `rm`, `mv`, `sed`, `rm -rf`, `find -delete`, `xargs rm`, truncation, shredding, destructive overwrite, formatting, and access-removing ownership or permission changes;
 - destructive data operations, including `DROP`, `TRUNCATE`, unbounded `DELETE`, destructive rollback, irreversible migration, bucket/object purge, queue/topic deletion, and bulk mutation without a bounded reversible plan;
 - destructive infrastructure or identity operations, including `kubectl delete`, `helm uninstall`, `terraform destroy`, `pulumi destroy`, cloud delete/purge calls, cluster or namespace teardown, and autonomous secret, key, certificate, credential, factor, or session revocation or rotation;
 - deleting repositories, worktrees, submodules, branches, tags, releases, packages, artifacts, registries, environments, evidence, audit logs, customer data, or production state;

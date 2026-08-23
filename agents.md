@@ -36,7 +36,7 @@ Resolve the current working directory, walk upward to the filesystem root, and r
 
 Inspect the current branch, complete working tree, remotes, default branch, open pull requests, linked GitHub issues, linked Linear work, repository documentation, tests, schemas, generated artifacts, deployment definitions, and relevant related repositories. Preserve every unfamiliar or uncommitted change.
 
-Use read-only inspection and non-pruning synchronization such as `git status --short --branch`, `git remote -v`, `git fetch --all`, `git diff`, `git log`, `git show`, and `git blame`. Never treat a dirty worktree or inconvenient branch as permission to discard state.
+Use read-only inspection and non-pruning synchronization such as `git status --short --branch`, `git remote -v`, `git fetch --all`, `git diff`, `git log`, `git show`, and `git blame`. Never treat a dirty worktree or inconvenient branch as permission to discard state. Avoid git rebase in favor of git merge.
 
 ## Mandatory semantic conflict resolution
 
@@ -47,7 +47,7 @@ For every conflict:
 1. Read the merge base, both complete sides, surrounding implementation, tests, schemas, generated artifacts, documentation, deployment configuration, and public contracts—not only conflict markers.
 2. Inspect the affected path history and normally review 3–10 relevant commits on each side with `git log`, `git show`, and `git blame` where useful. This history window means 3–10 relevant prior commits when that history is available.
 3. Review linked pull requests, issues, Linear work, related repositories in `sonus-auris`, and relevant external-organization repositories whenever behavior or contracts cross boundaries.
-4. Preserve compatible intent and invariants from both sides. Synthesize a conceptual merge instead of accepting `ours` or `theirs` wholesale; never select current or incoming content wholesale either.
+4. Preserve compatible intent and invariants from both sides. Synthesize a conceptual merge; never resolve by accepting `ours` or `theirs` wholesale, nor by selecting `current` or `incoming` wholesale.
 5. Scan the complete tree for unresolved markers and run the applicable formatter, linter, unit, integration, contract, build, security, and end-to-end checks.
 6. Document incompatible requirements, intentional choices, and any discarded intent in the commit and pull-request description.
 
@@ -58,7 +58,7 @@ Automated agents must **never execute or recommend** destructive, state-conceali
 The blacklist includes, without limitation:
 
 - every form of `git stash`, every mode of `git reset`, every mode of `git clean`, `git filter-repo`, `git filter-branch`, BFG, `git rebase`, interactive history rewriting, `git commit --amend`, commit replacement, destructive `git checkout -- <path>`, destructive `git restore`, `git branch -D`, ref or tag deletion, `git reflog expire`, `git gc --prune`, `git push --force`, `git push -f`, and `git push --force-with-lease`;
-- destructive filesystem commands and recursive or bulk mutation, including `rm`, `mv`, `sed`, `find -delete`, `xargs rm`, truncation, shredding, destructive overwrite, formatting, and access-removing ownership or permission changes;
+- destructive filesystem commands and recursive or bulk mutation, including `rm`, `mv`, `sed`, `rm -rf`, `find -delete`, `xargs rm`, truncation, shredding, destructive overwrite, formatting, and access-removing ownership or permission changes;
 - destructive data operations, including `DROP`, `TRUNCATE`, unbounded `DELETE`, destructive rollback, irreversible migration, bucket/object purge, queue/topic deletion, and bulk mutation without a bounded reversible plan;
 - destructive infrastructure or identity operations, including `kubectl delete`, `helm uninstall`, `terraform destroy`, `pulumi destroy`, cloud delete/purge calls, cluster or namespace teardown, and autonomous secret, key, certificate, credential, factor, or session revocation or rotation;
 - deleting repositories, worktrees, submodules, branches, tags, releases, packages, artifacts, registries, environments, evidence, audit logs, customer data, or production state;
@@ -80,7 +80,7 @@ Never print, log, commit, paste into issues, include in fixtures, or expose toke
 
 ## Pull requests, validation, and evidence
 
-Use focused branches and pull requests. Link the relevant Linear issue or project. Explain behavior, risks, migration and roll-forward considerations, security impact, tests run, conflicts and their semantic resolution, and cross-repository dependencies. Never report a branch, commit, pull request, merge, deployment, test run, or external update as complete without authoritative evidence from the remote system.
+Use focused branches and pull requests. Link the relevant Linear issue or project. Explain behavior, risks, migration and roll-forward considerations, security impact, tests run, conflicts and their semantic resolution, and cross-repository dependencies. Require authoritative evidence from the relevant remote system. Never report a branch, commit, pull request, merge, deployment, test run, or external update as complete without that evidence.
 
 GitHub Actions must use least-privilege permissions, explicit timeouts, concurrency cancellation where appropriate, checkout without persisted credentials, and immutable full-commit action pins. Dependency updates must remain reviewable and reproducible.
 <!-- ore-org-baseline:end -->
