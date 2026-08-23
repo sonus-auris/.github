@@ -1,7 +1,7 @@
 {
   "files": {
     ".github/workflows/org-context-integrity.yml": "799f56e9aebaea32749cb0c137ebff593524aacf0d5474669b4eba34a4cb406a",
-    "README.md": "b92945a572bc45764555ab79ec538553189f5b0cab7c6ba4dff7dd2f9f6239e3",
+    "README.md": "f386646612c737b6f05e910ca2d375ff74bf584c9fa723c33b8fd49d45588b96",
     "agents/org-context.agent.md": "05777457647faac0c0547eb31745ff2e72c8ec40ac9063c9f5a1a0edf13b1109",
     "profile/README.md": "c76107feac3218e4c08cc3c46f8265e9feece52529a34177af6a16afa52b4bdd",
     "project-context.yaml": "6e33d3129c0d93a9647e99124d3739d8b78901a469fcadd76bf9162f58a0733f"

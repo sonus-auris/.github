@@ -1,6 +1,6 @@
 # GitHub Copilot repository instructions
 
-`/agents.md` is the canonical policy for this repository and `/AGENTS.md` is its aligned compatibility mirror. Follow the policy in full. Organization-level files are not automatically inherited by other repositories, so each repository must maintain a compatible root policy.
+`/agents.md` is the canonical policy for this repository and `/AGENTS.md` is its byte-aligned compatibility mirror; on a case-insensitive filesystem, either spelling may resolve to the same file. Follow the policy in full. Organization-level files are not automatically inherited by other repositories, so each repository must maintain a compatible root policy.
 
 Resolve every Git conflict semantically and with full context. Read both sides plus surrounding code, documentation, tests, schemas, generated artifacts, and contracts. When relevant and available, inspect 3–10 prior commits using `git log`, `git show`, and `git blame`. Review related repositories in this organization and relevant external organizations when behavior crosses repository boundaries. Never hastily accept `ours` or `theirs`; preserve compatible intent and produce a conceptual merge.
 
@@ -32,7 +32,7 @@ Lowercase `agents.md` is canonical. Read every applicable lowercase `agents.md` 
 
 Inspect the current branch, complete working tree, remotes, default branch, open pull requests, linked GitHub issues, linked Linear work, repository documentation, tests, schemas, generated artifacts, deployment definitions, and relevant related repositories. Preserve every unfamiliar or uncommitted change.
 
-Use read-only inspection and non-pruning synchronization such as `git status --short --branch`, `git remote -v`, `git fetch --all`, `git diff`, `git log`, `git show`, and `git blame`. Never treat a dirty worktree or inconvenient branch as permission to discard state.
+Use read-only inspection and non-pruning synchronization such as `git status --short --branch`, `git remote -v`, `git fetch --all`, `git diff`, `git log`, `git show`, and `git blame`. Never treat a dirty worktree or inconvenient branch as permission to discard state. Avoid git rebase in favor of git merge.
 
 ## Mandatory semantic conflict resolution
 
@@ -41,9 +41,9 @@ Use read-only inspection and non-pruning synchronization such as `git status --s
 For every conflict:
 
 1. Read the merge base, both complete sides, surrounding implementation, tests, schemas, generated artifacts, documentation, deployment configuration, and public contracts—not only conflict markers.
-2. Inspect the affected path history and normally review 3–10 relevant commits on each side with `git log`, `git show`, and `git blame` where useful.
+2. Inspect the affected path history and normally review 3–10 relevant prior commits on each side with `git log`, `git show`, and `git blame` where useful.
 3. Review linked pull requests, issues, Linear work, related repositories in `sonus-auris`, and relevant external-organization repositories whenever behavior or contracts cross boundaries.
-4. Preserve compatible intent and invariants from both sides. Synthesize a conceptual merge; never resolve by selecting `ours`, `theirs`, `current`, or `incoming` wholesale.
+4. Preserve compatible intent and invariants from both sides. Synthesize a conceptual merge; never resolve by accepting `ours` or `theirs` wholesale, nor by selecting `current` or `incoming` wholesale.
 5. Scan the complete tree for unresolved markers and run the applicable formatter, linter, unit, integration, contract, build, security, and end-to-end checks.
 6. Document incompatible requirements, intentional choices, and any discarded intent in the commit and pull-request description.
 
@@ -76,7 +76,7 @@ Never print, log, commit, paste into issues, include in fixtures, or expose toke
 
 ## Pull requests, validation, and evidence
 
-Use focused branches and pull requests. Link the relevant Linear issue or project. Explain behavior, risks, migration and roll-forward considerations, security impact, tests run, conflicts and their semantic resolution, and cross-repository dependencies. Never report a branch, commit, pull request, merge, deployment, test run, or external update as complete without authoritative remote evidence.
+Use focused branches and pull requests. Link the relevant Linear issue or project. Explain behavior, risks, migration and roll-forward considerations, security impact, tests run, conflicts and their semantic resolution, and cross-repository dependencies. Require authoritative evidence from the relevant remote system. Never report a branch, commit, pull request, merge, deployment, test run, or external update as complete without that evidence.
 
 Scan the complete worktree for unresolved conflict markers and credential patterns. GitHub Actions must use least-privilege permissions, explicit timeouts, concurrency cancellation where appropriate, checkout without persisted credentials, and immutable full-commit action pins.
 <!-- ore-org-baseline:end -->

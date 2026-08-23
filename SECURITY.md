@@ -2,7 +2,7 @@
 
 ## Reporting a vulnerability
 
-Do not open a public issue for suspected vulnerabilities. Do not disclose exploit details, credentials, recordings, transcripts, personal data, biometric data, or production data in a public issue, discussion, pull request, commit, or Linear comment.
+Do not open a public issue for suspected vulnerabilities, and do not disclose vulnerabilities, exploit details, credentials, recordings, transcripts, personal data, biometric data, or production data in a public issue, discussion, pull request, commit, or Linear comment.
 
 Use the affected repository's **Security** tab and private vulnerability-reporting flow when it is available. If private reporting is not enabled, contact the organization maintainers through a verified private channel shown on the organization or maintainer profile. Share only the minimum information needed to establish contact until a private channel is confirmed.
 

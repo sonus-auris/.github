@@ -45,7 +45,7 @@ Use read-only inspection and non-pruning synchronization such as `git status --s
 For every conflict:
 
 1. Read the merge base, both complete sides, surrounding implementation, tests, schemas, generated artifacts, documentation, deployment configuration, and public contracts—not only conflict markers.
-2. Inspect the affected path history and normally review 3–10 relevant commits on each side with `git log`, `git show`, and `git blame` where useful. This history window means 3–10 relevant prior commits when that history is available.
+2. Inspect the affected path history and normally review 3–10 relevant prior commits on each side with `git log`, `git show`, and `git blame` where useful. This history window means 3–10 relevant prior commits when that history is available.
 3. Review linked pull requests, issues, Linear work, related repositories in `sonus-auris`, and relevant external-organization repositories whenever behavior or contracts cross boundaries.
 4. Preserve compatible intent and invariants from both sides. Synthesize a conceptual merge; never resolve by accepting `ours` or `theirs` wholesale, nor by selecting `current` or `incoming` wholesale.
 5. Scan the complete tree for unresolved markers and run the applicable formatter, linter, unit, integration, contract, build, security, and end-to-end checks.
@@ -84,3 +84,15 @@ Use focused branches and pull requests. Link the relevant Linear issue or projec
 
 GitHub Actions must use least-privilege permissions, explicit timeouts, concurrency cancellation where appropriate, checkout without persisted credentials, and immutable full-commit action pins. Dependency updates must remain reviewable and reproducible.
 <!-- ore-org-baseline:end -->
+
+<!-- ore-primary-branch-policy:begin -->
+## Primary branch and concurrent-agent policy
+
+This organization policy overrides generic feature-branch and worktree defaults for agent tooling.
+
+- Highly prefer an existing primary branch, in this order: `main`, `dev`, then `master`.
+- Work directly on the selected primary branch even when other agents are active. Use another branch only when a human or a repository-specific release process explicitly requires it.
+- Never create or use a Git worktree unless a human explicitly instructs you to do so for the current task. Concurrency alone is not permission to use a worktree.
+- Concurrent agents must coordinate repository and file ownership through the available agent communication channel, keep edits scoped, inspect live state before each write, and hand off cleanly. Coordinate instead of isolating routine work in worktrees.
+- Preserve unrelated in-progress changes and never overwrite another agent's work. If safe ownership of overlapping files cannot be established, pause that overlapping edit and coordinate before continuing.
+<!-- ore-primary-branch-policy:end -->

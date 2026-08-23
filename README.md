@@ -10,6 +10,11 @@ This public `.github` repository is the canonical home for **sonus-auris** organ
 - Copilot instructions: [`.github/copilot-instructions.md`](.github/copilot-instructions.md)
 - Portable validator: [`scripts/validate-agent-policy.sh`](scripts/validate-agent-policy.sh)
 
+## Canonical service/data architecture
+
+- [`*-lib-core` data plane and Rust web/API boundary](LIB_CORE_AND_SERVICE_BOUNDARIES.md)
+- [Full service and data architecture](SERVICE_AND_DATA_ARCHITECTURE.md)
+
 ## Generated organization context bundle
 
 The reviewed central registry identified by the immutable commit in [`project-context.yaml`](project-context.yaml) is the source of truth for the generated, public-safe organization context. These managed artifacts must not be edited independently:
@@ -72,7 +77,6 @@ GitHub can use supported community-health files from a public organization `.git
 
 Generated managed-policy version: `2026-08-08`.
 <!-- ore-org-baseline:end -->
-
 <!-- BEGIN MANAGED REPOSITORY RELATIONSHIPS v1 -->
 ## Repository relationship registry
 

@@ -63,7 +63,7 @@ AGENT_PHRASES = (
     "git reset",
     "git clean",
     "git filter-repo",
-    "3–10 relevant commits",
+    "3–10 relevant prior commits",
     "Never report",
 )
 
@@ -215,8 +215,9 @@ def validate(root: Path) -> list[str]:
         if agents is not None:
             if MANDATORY_DIRECTIVE not in agents:
                 errors.append("agents.md does not preserve the mandatory directive verbatim")
+            agents_casefold = agents.casefold()
             for phrase in AGENT_PHRASES:
-                if phrase not in agents:
+                if phrase.casefold() not in agents_casefold:
                     errors.append(f"agents.md missing required phrase: {phrase!r}")
 
     uppercase_path = root / "AGENTS.md"

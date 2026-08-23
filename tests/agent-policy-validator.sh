@@ -31,9 +31,12 @@ import sys
 path = Path(sys.argv[1])
 text = path.read_text()
 needle = "avoid git rebase in favor of git merge."
-if needle not in text:
+index = text.casefold().find(needle.casefold())
+if index < 0:
     raise SystemExit("fixture prerequisite missing")
-path.write_text(text.replace(needle, "prefer a reviewed integration strategy.", 1))
+path.write_text(
+    text[:index] + "prefer a reviewed integration strategy." + text[index + len(needle):]
+)
 PY
 expect_failure missing-phrase "$missing_phrase"
 
