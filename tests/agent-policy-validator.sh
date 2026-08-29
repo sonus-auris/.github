@@ -27,16 +27,20 @@ expect_failure() {
 missing_phrase="$(copy_fixture missing-phrase)"
 python3 - "$missing_phrase/agents.md" <<'PY'
 from pathlib import Path
+import re
 import sys
 path = Path(sys.argv[1])
 text = path.read_text()
 needle = "avoid git rebase in favor of git merge."
-index = text.casefold().find(needle.casefold())
-if index < 0:
-    raise SystemExit("fixture prerequisite missing")
-path.write_text(
-    text[:index] + "prefer a reviewed integration strategy." + text[index + len(needle):]
+text, replacements = re.subn(
+    re.escape(needle),
+    "prefer a reviewed integration strategy.",
+    text,
+    flags=re.IGNORECASE,
 )
+if replacements == 0:
+    raise SystemExit("fixture prerequisite missing")
+path.write_text(text)
 PY
 expect_failure missing-phrase "$missing_phrase"
 
