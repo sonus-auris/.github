@@ -7,12 +7,14 @@ Describe the problem, intended behavior, and why this repository owns the change
 - [ ] All commits are on a non-default branch and this pull request is the only proposed path into the default branch.
 - [ ] No generated tool, bot, migration runner, or deployment process writes directly to `main`, `master`, or another protected default branch.
 - [ ] The change is small enough to review, or its staged rollout and follow-up pull requests are identified.
+- [ ] Cross-repository dependencies are pinned by immutable commit, lockfile, image digest, or released Zed package.
 
 ## Scope and boundaries
 
 - [ ] The change is focused and does not silently cross repository ownership boundaries.
 - [ ] No `*-infra` repository is introduced as a Git submodule under `*-monorepo/apps`.
 - [ ] Public contracts, compatibility, rollback, telemetry, and failure behavior are documented.
+- [ ] Public contracts are generated from their canonical schema/interface source and consumer compatibility was checked.
 - [ ] Shared functionality is imported from its owning repository rather than copied into a new local implementation.
 
 ## Contracts, SQL, and migrations
@@ -20,6 +22,7 @@ Describe the problem, intended behavior, and why this repository owns the change
 - [ ] If SQL changes, declarations use the registered logical namespace `<organization>.<domain>` and stable `<domain>_` object prefixes where a shared PostgreSQL schema such as `public` is required.
 - [ ] Domain SQL may remain in the owning organization, but identity, ordering, checksums, drift detection, and promotion are registered through `declarative-migrations`.
 - [ ] JSON Schema, generated language interfaces, ORM models, fixtures, and migration declarations were updated and checked deterministically together.
+- [ ] Application startup validates schema compatibility and does not apply production DDL.
 - [ ] Destructive changes include compatibility, backfill, rollback, tenant isolation, and row-level-security evidence.
 
 ## Infrastructure and end-to-end coverage
@@ -27,6 +30,7 @@ Describe the problem, intended behavior, and why this repository owns the change
 - [ ] Kubernetes application manifests compose through `oresoftware/k8s-cluster` and reuse `oresoftware/k8s-libs-and-shared-defs`; application repositories do not become a second cluster control plane.
 - [ ] Workload identity, restricted Pod Security, default-deny networking, explicit egress, probes, resources, secret handling, and immutable image/dependency references were considered.
 - [ ] Destructive and cross-runtime tests run in the corresponding `*-test` organization or an isolated e2e environment, with teardown evidence.
+- [ ] Unit, integration, adversarial, migration, and end-to-end tests cover each changed behavior at the appropriate boundary.
 - [ ] Zed lifecycle hooks cover the relevant pre-build, pre-test, and pre-publish checks without bypassing local language-native validation.
 
 ## Validation
@@ -36,6 +40,7 @@ List formatters, linters, tests, builds, schema/codegen checks, migration valida
 ## Safety
 
 - [ ] No credentials, customer data, private-repository inventory, or sensitive telemetry is included.
+- [ ] Authentication and authorization failures are fail-closed, and sensitive operations are auditable without recording secrets or user content.
 - [ ] Conflicts were resolved semantically using both sides and relevant history.
 - [ ] Destructive Git recovery, force pushes to protected branches, and history rewrites were not used.
 - [ ] Logs and traces exclude secrets and user content by default and preserve tenant boundaries.
