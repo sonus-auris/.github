@@ -1,11 +1,14 @@
 # Shared ORM Layer — `*-orm-core` / `*-lib-core` Rust adapters
 
 **Status:** Revised 2026-08-29 (aligns with dual-source persistence plan)  
-**Extends:** [`SERVICE_AND_DATA_ARCHITECTURE.md`](../SERVICE_AND_DATA_ARCHITECTURE.md) and [`PERSISTENCE_DUAL_SOURCE.md`](PERSISTENCE_DUAL_SOURCE.md).
+**Extends:** [`SERVICE_AND_DATA_ARCHITECTURE.md`](../SERVICE_AND_DATA_ARCHITECTURE.md) and [`PERSISTENCE_DUAL_SOURCE.md`](PERSISTENCE_AUTHORITY.md).
 
-> **Persistence authority (2026-08-29):** Product SQL and ORM generation are owned in this org’s `*-lib-core` under the dual TypeSpec (P0) + authored JSON Schema (P1) model. Diesel + diesel-async is the primary Rust runtime; SeaORM is secondary. See [`PERSISTENCE_DUAL_SOURCE.md`](PERSISTENCE_DUAL_SOURCE.md). Claims that `ORESoftware/k8s-libs-and-shared-defs` authors this org’s product tables, or that SeaORM is the sole Rust ORM / schema authority, are superseded for product persistence.
+> **Persistence authority (2026-08-29):** Product SQL and ORM generation are owned in this org’s `*-lib-core` under the dual TypeSpec (P0) + authored JSON Schema (P1) model. Diesel + diesel-async is the primary Rust runtime; SeaORM is secondary. See [`PERSISTENCE_DUAL_SOURCE.md`](PERSISTENCE_AUTHORITY.md). Claims that `ORESoftware/k8s-libs-and-shared-defs` authors this org’s product tables, or that SeaORM is the sole Rust ORM / schema authority, are superseded for product persistence.
 
 ## Decision
+
+> **Partial supersession (2026-08-29):** Product schema authority and ORM primacy are redefined in [`PERSISTENCE_AUTHORITY.md`](../PERSISTENCE_AUTHORITY.md) and Linear [general-migration-plan](https://linear.app/denman/document/general-migration-plan-f76fadd4cbb2) revision f. End state: TypeSpec (P0) + authored JSON Schema (P1) in `sonus-auris-lib-core`; Diesel primary / SeaORM secondary; SQL/ORM generation leaves `k8s-libs-and-shared-defs`. This document’s web/API capability split and “migrations are not part of orm-core” rules remain in force.
+
 
 Because both the web server and the API server read from the database, Rust ORM adapters are shared through the org’s data-plane package rather than duplicated in each service:
 
