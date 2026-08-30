@@ -1,26 +1,26 @@
-# Shared ORM Layer — `*-orm-core` (SeaORM)
+# Shared ORM Layer — `*-orm-core` / `*-lib-core` Rust adapters
 
-**Status:** Adopted 2026-08-07
-**Extends:** [`SERVICE_AND_DATA_ARCHITECTURE.md`](../SERVICE_AND_DATA_ARCHITECTURE.md) (the canonical service & data architecture policy). This addendum records one additional decision; it does not restate or override that policy.
+**Status:** Revised 2026-08-29 (aligns with dual-source persistence plan)  
+**Extends:** [`SERVICE_AND_DATA_ARCHITECTURE.md`](../SERVICE_AND_DATA_ARCHITECTURE.md) and [`PERSISTENCE_DUAL_SOURCE.md`](PERSISTENCE_DUAL_SOURCE.md).
+
+> **Persistence authority (2026-08-29):** Product SQL and ORM generation are owned in this org’s `*-lib-core` under the dual TypeSpec (P0) + authored JSON Schema (P1) model. Diesel + diesel-async is the primary Rust runtime; SeaORM is secondary. See [`PERSISTENCE_DUAL_SOURCE.md`](PERSISTENCE_DUAL_SOURCE.md). Claims that `ORESoftware/k8s-libs-and-shared-defs` authors this org’s product tables, or that SeaORM is the sole Rust ORM / schema authority, are superseded for product persistence.
 
 ## Decision
 
-Because both the web server and the API server read from the database, the ORM code is shared through a dedicated per-organization library crate rather than duplicated in each service:
+Because both the web server and the API server read from the database, Rust ORM adapters are shared through the org’s data-plane package rather than duplicated in each service:
 
-- **Each organization gets one shared ORM crate repo, named `<org-prefix>-orm-core`:**
-  - `fiducia-cloud/fiducia-orm-core`
-  - `sonus-auris/sonus-auris-orm-core`
-  - `zed-pkg/zed-orm-core`
-- **The Rust ORM is always [SeaORM](https://www.sea-ql.org/SeaORM/).**
-- **Schema definitions are imported from [`oresoftware/k8s-libs-and-shared-defs`](https://github.com/oresoftware/k8s-libs-and-shared-defs)** — namespaced/segmented by GitHub org and project per the namespace contract in the canonical policy. `*-orm-core` derives its entities from those shared definitions; it never defines an independent, competing schema.
+- **Canonical home is `sonus-auris/sonus-auris-lib-core`.** A standalone `sonus-auris-orm-core` may remain as a generated compatibility package; it must not author schema or desired.sql.
+- **Primary Rust runtime:** [Diesel](https://diesel.rs/) + diesel-async, generated from the reconciled TypeSpec release lineage after dual-source parity.
+- **Secondary Rust runtime:** [SeaORM](https://www.sea-ql.org/SeaORM/), generated from scratch databases built from both TypeSpec and JSON Schema candidates, then published from the TypeSpec lineage after compare.
+- **Schema authority is in-org:** TypeSpec + authored JSON Schema + extensions SQL inside `sonus-auris-lib-core`. `ORESoftware/k8s-libs-and-shared-defs` keeps platform SQL and the fleet catalog only after cutover—not this org’s product table bodies.
 
 ## Boundaries
 
-- **API server** consumes the full read/write entity surface of `*-orm-core`.
-- **Web server** consumes only the read-only surface: named, policy-aware query functions (or stable read views). The crate must not export a raw `DatabaseConnection`, unrestricted query builder, or public entity manager to web-tier request handlers — this matches the web-tier direct-read boundary in the canonical policy, and the web tier still connects with its `SELECT`-only database identity.
-- **Migrations are not part of `*-orm-core`.** The owning API server keeps sole migration authority via [`declarative-migrations`](https://github.com/declarative-migrations); the ORM crate carries entity and query code only. SeaORM codegen may help author entities, but the shared definitions in `k8s-libs-and-shared-defs` plus reviewed migration SQL remain the source of truth.
-- **Versioning:** a `*-orm-core` release pins the exact shared-definition version/digest it was generated against. Web and API services pin compatible `*-orm-core` versions; a schema expand/contract window is also an `*-orm-core` compatibility window, and lib major bumps are treated as schema events.
+- **API server** consumes the full read/write surface (Diesel primary; SeaORM secondary where still required).
+- **Web server** consumes only the read-only surface: named, policy-aware query functions. No raw Diesel/`DatabaseConnection`, unrestricted query builder, or public entity manager in web request handlers. Web still uses a `SELECT`-only database identity.
+- **Migrations are not part of `*-orm-core`.** Desired-state SQL and `dpm` apply live in `*-lib-core` + a migrator Job via [`declarative-migrations`](https://github.com/declarative-migrations). SeaORM/Diesel must not run DDL at process boot.
+- **Versioning:** API and web pin the same `sonus-auris-lib-core` digest; schema expand/contract is a lib-core event.
 
 ## Rationale
 
-A shared crate fixes entity/mapping drift between the two consumers of the same schema. The known trade-off — build-time coupling replacing runtime coupling — is accepted and managed via the version-pinning rules above and the expand/contract release discipline in the canonical policy.
+A shared data-plane package fixes entity/mapping drift between the two consumers of the same schema. Dual TypeSpec/JSON Schema authorship catches generator and model defects before `dpm` apply. The build-time coupling trade-off is managed via Zed digests and expand/contract release discipline.

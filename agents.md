@@ -11,6 +11,10 @@ Preserve existing work and use reversible, reviewable operations.
 - Inspect `git status --short --branch` before making changes and again before publishing them.
 - When unexpected worktree changes, ambiguous ownership, or a potentially destructive requirement is encountered, stop and report the condition. Do not hide it with a stash, reset, cleanup, or history rewrite.
 
+
+## Persistence dual-source (required reading)
+
+Before changing schema, ORM, or migrations, read [`docs/PERSISTENCE_DUAL_SOURCE.md`](docs/PERSISTENCE_DUAL_SOURCE.md). Fleet plan: [general-migration-plan](https://linear.app/denman/document/general-migration-plan-f76fadd4cbb2).
 ## Canonical organization links
 
 - GitHub organization: https://github.com/sonus-auris
