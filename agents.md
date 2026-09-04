@@ -10,7 +10,6 @@ Preserve existing work and use reversible, reviewable operations.
 - **avoid git rebase in favor of git merge.**
 - Inspect `git status --short --branch` before making changes and again before publishing them.
 - When unexpected worktree changes, ambiguous ownership, or a potentially destructive requirement is encountered, stop and report the condition. Do not hide it with a stash, reset, cleanup, or history rewrite.
-
 ## Canonical organization links
 
 - GitHub organization: https://github.com/sonus-auris
@@ -96,3 +95,19 @@ This organization policy overrides generic feature-branch and worktree defaults 
 - Concurrent agents must coordinate repository and file ownership through the available agent communication channel, keep edits scoped, inspect live state before each write, and hand off cleanly. Coordinate instead of isolating routine work in worktrees.
 - Preserve unrelated in-progress changes and never overwrite another agent's work. If safe ownership of overlapping files cannot be established, pause that overlapping edit and coordinate before continuing.
 <!-- ore-primary-branch-policy:end -->
+
+<!-- persistence-authority:begin -->
+## Persistence authority (TypeSpec + JSON Schema + Diesel + SeaORM)
+
+Product database contracts for this organization are owned in `*-lib-core`, not in `ORESoftware/k8s-libs-and-shared-defs`.
+
+Before changing schema, ORM adapters, or migrations, read [`docs/PERSISTENCE_AUTHORITY.md`](docs/PERSISTENCE_AUTHORITY.md).
+
+- **P0:** authored persistence TypeSpec (canonical AST)
+- **P1:** independently authored persistence JSON Schema (secondary-primary; release veto; never overwritten by TypeSpec emitters)
+- **Runtime:** Diesel + diesel-async primary; SeaORM secondary
+- **Apply:** generated release `desired.sql` via [declarative-migrations](https://github.com/declarative-migrations) (`dpm`); no DDL at API/web boot
+- **Fleet plan:** [general-migration-plan](https://linear.app/denman/document/general-migration-plan-f76fadd4cbb2) revision f
+
+Do not land new product SQL or ORM generation in shared-defs for this org.
+<!-- persistence-authority:end -->

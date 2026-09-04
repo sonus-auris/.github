@@ -5,9 +5,15 @@
 **Scope:** every database-backed product organization with separate browser web and product API services
 
 **Linear authority:** [Canonical `*-lib-core` data plane and Rust web/API ownership standard](https://linear.app/denman/document/canonical-lib-core-data-plane-and-rust-webapi-ownership-standard-66b5df7d09c7)
+
+> **Addendum (2026-08-29):** Dual-source persistence (TypeSpec P0 + authored JSON Schema P1), Diesel as primary Rust ORM, and relocation of product SQL/ORM generation into `sonus-auris-lib-core` are mandatory per [`docs/PERSISTENCE_AUTHORITY.md`](docs/PERSISTENCE_AUTHORITY.md). Desired-state SQL for dpm is the **parity-certified release artifact**, not a forever hand-edited shared-defs segment.
+
 **Program:** [DEN-3033](https://linear.app/denman/issue/DEN-3033/cross-org-architecture-conformance-program-repo-layers-shared)
 
 > This addendum supersedes older portfolio text that names a standalone `*-orm-core` repository, a general-purpose `*-lib`, an API-server repository, or `ORESoftware/k8s-libs-and-shared-defs` as the human-authored product database authority. Those locations may remain temporary compatibility packages, generated mirrors, deployment registries, or implementation consumers, but they must not remain a second source of truth.
+
+
+> **Persistence authority (2026-08-29):** Product SQL and ORM generation are owned in this org’s `*-lib-core` under the dual TypeSpec (P0) + authored JSON Schema (P1) model. Diesel + diesel-async is the primary Rust runtime; SeaORM is secondary. See [`docs/PERSISTENCE_AUTHORITY.md`](docs/PERSISTENCE_AUTHORITY.md). Claims that `ORESoftware/k8s-libs-and-shared-defs` authors this org’s product tables, or that SeaORM is the sole Rust ORM / schema authority, are superseded for product persistence.
 
 ## Executive decision
 
@@ -15,8 +21,10 @@ Each database-backed product organization maintains exactly one repository named
 
 `*-lib-core` is the product data-plane source of truth for:
 
-- persistence-oriented JSON Schema and explicit mappings from public interfaces;
-- declarative desired-state SQL;
+- authored persistence TypeSpec (P0 canonical AST) and independently authored persistence JSON Schema (P1 secondary-primary with veto);
+- PostgreSQL extensions SQL (RLS, guards, triggers) shared by both dual-source pipelines;
+- release `desired.sql` and ORM artifacts published only after dual-source catalog/ORM parity (Diesel primary, SeaORM secondary);
+- explicit mappings from public interfaces;
 - migration inputs, compatibility declarations, backfills, verification checks, and forward-fix metadata;
 - generator configuration and generated ORM/model adapters for supported languages;
 - named, typed, authorization-aware database read operations;
