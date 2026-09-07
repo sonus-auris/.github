@@ -1,0 +1,41 @@
+name: Source alignment contract
+
+on:
+  pull_request:
+    paths:
+      - "governance/**"
+      - "scripts/validate_source_alignment.py"
+      - "tests/source_alignment_validator.py"
+      - ".github/workflows/source-alignment.yml"
+  push:
+    branches: [main]
+    paths:
+      - "governance/**"
+      - "scripts/validate_source_alignment.py"
+      - "tests/source_alignment_validator.py"
+      - ".github/workflows/source-alignment.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: sonus-auris-source-alignment-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          fetch-depth: 1
+      - name: Validate canonical contracts and manifest
+        shell: bash
+        run: python3 scripts/validate_source_alignment.py --root .
+      - name: Exercise fail-closed validator fixtures
+        shell: bash
+        run: python3 tests/source_alignment_validator.py
