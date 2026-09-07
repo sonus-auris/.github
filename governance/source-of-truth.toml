@@ -74,7 +74,6 @@ required = true
 status = "verified"
 expectedVisibility = "private"
 observedVisibility = "private"
-mirrorMode = "none"
 evidence = "GitHub repository metadata observed 2026-09-07."
 note = "Independent TypeSpec and authored JSON Schema product-contract authority; it is referenced rather than mirrored by this governance manifest."
 
@@ -85,7 +84,6 @@ required = true
 status = "verified"
 expectedVisibility = "private"
 observedVisibility = "private"
-mirrorMode = "none"
 evidence = "GitHub repository metadata observed 2026-09-07."
 
 [[repositories]]
@@ -95,7 +93,6 @@ required = true
 status = "verified"
 expectedVisibility = "private"
 observedVisibility = "private"
-mirrorMode = "none"
 evidence = "GitHub repository metadata observed 2026-09-07."
 
 [[repositories]]
@@ -105,7 +102,6 @@ required = true
 status = "verified"
 expectedVisibility = "private"
 observedVisibility = "private"
-mirrorMode = "none"
 evidence = "GitHub repository metadata observed 2026-09-07."
 note = "Deployable application repositories belong under apps/ as git submodules; infrastructure remains outside apps/."
 
@@ -116,7 +112,6 @@ required = true
 status = "verified"
 expectedVisibility = "private"
 observedVisibility = "private"
-mirrorMode = "none"
 evidence = "GitHub repository metadata observed 2026-09-07."
 note = "Declared standard-name infrastructure repository; existing migration/consolidation work remains authoritative for actual ownership."
 
@@ -127,7 +122,6 @@ required = false
 status = "drift"
 expectedVisibility = "private"
 observedVisibility = "private"
-mirrorMode = "none"
 evidence = "Legacy dotted-name infrastructure repository remains visible on 2026-09-07."
 note = "Preserve until DEN-3917 and related work inventory unique history and identify a semantic salvage/deprecation path; do not delete or archive through this change."
 
@@ -138,7 +132,6 @@ required = true
 status = "verified"
 expectedVisibility = "private"
 observedVisibility = "private"
-mirrorMode = "none"
 evidence = "GitHub repository metadata observed 2026-09-07."
 
 [[repositories]]
@@ -148,7 +141,6 @@ required = true
 status = "verified"
 expectedVisibility = "private"
 observedVisibility = "private"
-mirrorMode = "none"
 evidence = "GitHub repository metadata observed 2026-09-07."
 
 [[repositories]]
@@ -158,7 +150,6 @@ required = true
 status = "verified"
 expectedVisibility = "private"
 observedVisibility = "private"
-mirrorMode = "none"
 evidence = "GitHub repository metadata observed 2026-09-07."
 
 [[repositories]]
@@ -168,7 +159,6 @@ required = true
 status = "verified"
 expectedVisibility = "private"
 observedVisibility = "private"
-mirrorMode = "none"
 evidence = "GitHub repository metadata observed 2026-09-07."
 
 [[repositories]]
@@ -178,7 +168,6 @@ required = true
 status = "verified"
 expectedVisibility = "private"
 observedVisibility = "private"
-mirrorMode = "none"
 evidence = "GitHub repository metadata observed 2026-09-07."
 
 [[repositories]]
@@ -188,7 +177,6 @@ required = true
 status = "verified"
 expectedVisibility = "private"
 observedVisibility = "private"
-mirrorMode = "none"
 evidence = "GitHub repository metadata observed 2026-09-07."
 
 [[repositories]]
@@ -198,7 +186,6 @@ required = true
 status = "verified"
 expectedVisibility = "private"
 observedVisibility = "private"
-mirrorMode = "none"
 evidence = "GitHub repository metadata observed 2026-09-07."
 
 [[repositories]]
@@ -208,7 +195,6 @@ required = true
 status = "verified"
 expectedVisibility = "private"
 observedVisibility = "private"
-mirrorMode = "none"
 evidence = "GitHub repository metadata observed 2026-09-07."
 
 [[repositories]]
@@ -218,7 +204,6 @@ required = true
 status = "drift"
 expectedVisibility = "private"
 observedVisibility = "public"
-mirrorMode = "none"
 evidence = "GitHub repository metadata observed 2026-09-07."
 note = "Server-only Diesel/SeaORM code should not be exposed as a public repository without a separate reviewed publication decision."
 
@@ -228,7 +213,6 @@ repository = "sonus-auris/sonus-auris-pub-lib-core"
 required = true
 status = "verified"
 observedVisibility = "private"
-mirrorMode = "none"
 evidence = "GitHub repository metadata observed 2026-09-07."
 note = "Public/external API surface does not by itself certify that the repository is safe to make public."
 
