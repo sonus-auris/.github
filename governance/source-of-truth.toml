@@ -1,0 +1,292 @@
+schemaVersion = "ores.organization-source-of-truth.v1"
+revision = 1
+organization = "sonus-auris"
+authorityRepository = "sonus-auris/.github"
+canonicalPath = "governance/source-of-truth.toml"
+synchronizationPolicy = "append-only"
+reviewedAt = "2026-09-07T21:57:00Z"
+linearIssue = "DEN-3953"
+githubIssue = "sonus-auris/.github#38"
+
+[[repositories]]
+role = "canonical"
+repository = "sonus-auris/.github"
+required = true
+status = "drift"
+expectedVisibility = "private"
+observedVisibility = "public"
+manifestPath = "governance/source-of-truth.toml"
+mirrorMode = "full"
+evidence = "GitHub repository metadata observed 2026-09-07; visibility correction requires an administrative path."
+note = "Lowercase agents.md remains the canonical agent-safety policy inside this organization-direction authority."
+
+[[repositories]]
+role = "documentation"
+repository = "sonus-auris/sonus-auris-docs"
+required = true
+status = "verified"
+expectedVisibility = "private"
+observedVisibility = "private"
+manifestPath = "governance/source-of-truth.toml"
+mirrorMode = "pointer"
+evidence = "GitHub repository metadata and repository-specific AGENTS.md observed 2026-09-07."
+note = "Long-form product documentation and draft legal Markdown templates; never store executed contracts or signature images."
+
+[[repositories]]
+role = "marketing"
+repository = "sonus-auris/sonus-auris.github.io"
+required = true
+status = "verified"
+expectedVisibility = "public"
+observedVisibility = "public"
+manifestPath = "governance/source-of-truth.toml"
+mirrorMode = "pointer"
+evidence = "GitHub repository metadata and repository-specific agents.md observed 2026-09-07."
+note = "Public Astro marketing, legal, privacy, deletion and store-review surface; product claims must match shipped behavior."
+
+[[repositories]]
+role = "mcpServer"
+repository = "sonus-auris/sonus-auris-mcp-server.rs"
+required = true
+status = "verified"
+expectedVisibility = "private"
+observedVisibility = "private"
+manifestPath = "governance/source-of-truth.toml"
+mirrorMode = "pointer"
+evidence = "GitHub repository metadata and repository-specific agents.md observed 2026-09-07."
+note = "MCP stdout remains protocol-only; governance metadata must not add runtime logging or mutation capabilities."
+
+[[repositories]]
+role = "cli"
+repository = "sonus-auris/sonus-auris-cli"
+required = true
+status = "verified"
+expectedVisibility = "private"
+observedVisibility = "private"
+manifestPath = "governance/source-of-truth.toml"
+mirrorMode = "pointer"
+evidence = "GitHub repository metadata observed 2026-09-07."
+
+[[repositories]]
+role = "interfaces"
+repository = "sonus-auris/sonus-auris-interfaces"
+required = true
+status = "verified"
+expectedVisibility = "private"
+observedVisibility = "private"
+mirrorMode = "none"
+evidence = "GitHub repository metadata observed 2026-09-07."
+note = "Independent TypeSpec and authored JSON Schema product-contract authority; it is referenced rather than mirrored by this governance manifest."
+
+[[repositories]]
+role = "clients"
+repository = "sonus-auris/sonus-auris-clients"
+required = true
+status = "verified"
+expectedVisibility = "private"
+observedVisibility = "private"
+mirrorMode = "none"
+evidence = "GitHub repository metadata observed 2026-09-07."
+
+[[repositories]]
+role = "sync"
+repository = "sonus-auris/sonus-auris-sync"
+required = true
+status = "verified"
+expectedVisibility = "private"
+observedVisibility = "private"
+mirrorMode = "none"
+evidence = "GitHub repository metadata observed 2026-09-07."
+
+[[repositories]]
+role = "monorepo"
+repository = "sonus-auris/sonus-auris-monorepo"
+required = true
+status = "verified"
+expectedVisibility = "private"
+observedVisibility = "private"
+mirrorMode = "none"
+evidence = "GitHub repository metadata observed 2026-09-07."
+note = "Deployable application repositories belong under apps/ as git submodules; infrastructure remains outside apps/."
+
+[[repositories]]
+role = "infrastructure"
+repository = "sonus-auris/sonus-auris-infra"
+required = true
+status = "verified"
+expectedVisibility = "private"
+observedVisibility = "private"
+mirrorMode = "none"
+evidence = "GitHub repository metadata observed 2026-09-07."
+note = "Declared standard-name infrastructure repository; existing migration/consolidation work remains authoritative for actual ownership."
+
+[[repositories]]
+role = "other"
+repository = "sonus-auris/sonus-auris.infra"
+required = false
+status = "drift"
+expectedVisibility = "private"
+observedVisibility = "private"
+mirrorMode = "none"
+evidence = "Legacy dotted-name infrastructure repository remains visible on 2026-09-07."
+note = "Preserve until DEN-3917 and related work inventory unique history and identify a semantic salvage/deprecation path; do not delete or archive through this change."
+
+[[repositories]]
+role = "desktopRust"
+repository = "sonus-auris/sonus-auris-desktop-app.rs"
+required = true
+status = "verified"
+expectedVisibility = "private"
+observedVisibility = "private"
+mirrorMode = "none"
+evidence = "GitHub repository metadata observed 2026-09-07."
+
+[[repositories]]
+role = "flutter"
+repository = "sonus-auris/sonus-auris-flutter"
+required = true
+status = "verified"
+expectedVisibility = "private"
+observedVisibility = "private"
+mirrorMode = "none"
+evidence = "GitHub repository metadata observed 2026-09-07."
+
+[[repositories]]
+role = "lambdas"
+repository = "sonus-auris/sonus-auris-lambdas"
+required = true
+status = "verified"
+expectedVisibility = "private"
+observedVisibility = "private"
+mirrorMode = "none"
+evidence = "GitHub repository metadata observed 2026-09-07."
+
+[[repositories]]
+role = "apiServer"
+repository = "sonus-auris/sonus-auris-api-server.rs"
+required = true
+status = "verified"
+expectedVisibility = "private"
+observedVisibility = "private"
+mirrorMode = "none"
+evidence = "GitHub repository metadata observed 2026-09-07."
+
+[[repositories]]
+role = "adminApiServer"
+repository = "sonus-auris/sonus-auris-admin-api-server.rs"
+required = true
+status = "verified"
+expectedVisibility = "private"
+observedVisibility = "private"
+mirrorMode = "none"
+evidence = "GitHub repository metadata observed 2026-09-07."
+
+[[repositories]]
+role = "webServer"
+repository = "sonus-auris/sonus-auris-web-server.rs"
+required = true
+status = "verified"
+expectedVisibility = "private"
+observedVisibility = "private"
+mirrorMode = "none"
+evidence = "GitHub repository metadata observed 2026-09-07."
+
+[[repositories]]
+role = "adminWebServer"
+repository = "sonus-auris/sonus-auris-admin-web-server.rs"
+required = true
+status = "verified"
+expectedVisibility = "private"
+observedVisibility = "private"
+mirrorMode = "none"
+evidence = "GitHub repository metadata observed 2026-09-07."
+
+[[repositories]]
+role = "libCore"
+repository = "sonus-auris/sonus-auris-lib-core"
+required = true
+status = "verified"
+expectedVisibility = "private"
+observedVisibility = "private"
+mirrorMode = "none"
+evidence = "GitHub repository metadata observed 2026-09-07."
+
+[[repositories]]
+role = "ormCore"
+repository = "sonus-auris/sonus-auris-orm-core"
+required = true
+status = "drift"
+expectedVisibility = "private"
+observedVisibility = "public"
+mirrorMode = "none"
+evidence = "GitHub repository metadata observed 2026-09-07."
+note = "Server-only Diesel/SeaORM code should not be exposed as a public repository without a separate reviewed publication decision."
+
+[[repositories]]
+role = "pubLibCore"
+repository = "sonus-auris/sonus-auris-pub-lib-core"
+required = true
+status = "verified"
+observedVisibility = "private"
+mirrorMode = "none"
+evidence = "GitHub repository metadata observed 2026-09-07."
+note = "Public/external API surface does not by itself certify that the repository is safe to make public."
+
+[[mappings]]
+kind = "linearProject"
+identifier = "https://linear.app/denman/project/githubcomsonus-auris-a557165528ef"
+status = "verified"
+evidence = "Linear project fetched through the connected Denman workspace on 2026-09-07."
+
+[[mappings]]
+kind = "githubProject"
+status = "unverified"
+note = "The current GitHub connector exposes no Projects-v2 read/write operation; do not invent a project number or claim issue synchronization."
+
+[[mappings]]
+kind = "supabaseOrganization"
+identifier = "ngixgitdtrbwnaimwsbb"
+status = "verified"
+evidence = "Recorded in the Sonus Auris Linear project provider inventory on 2026-09-04."
+note = "Auth, canonical and sonus-auris-main projects are inactive; exact admin is missing and creation is blocked by an overdue invoice. Resource identity is verified, operational readiness is not."
+
+[[mappings]]
+kind = "supabaseNamespace"
+identifier = "public|sonus_auris"
+status = "drift"
+evidence = "The organization policy records an unresolved public-versus-sonus_auris namespace conflict."
+note = "Resolve from live catalog evidence; this governance change does not choose a side or run a migration."
+
+[[mappings]]
+kind = "neonOrganization"
+identifier = "org-hidden-leaf-06854113"
+status = "verified"
+evidence = "Recorded in the Sonus Auris Linear project provider inventory; canonical, auth and admin projects exist."
+note = "All computes were independently recorded disabled/idle; PrivateLink remains unconfigured."
+
+[[mappings]]
+kind = "cloudflareDomain"
+identifier = "sonusauris.app"
+status = "unverified"
+note = "Active domain candidate from the Linear inventory; organization assignment, DNS and routing remain unverified."
+
+[[mappings]]
+kind = "gcpProject"
+identifier = "sonus-auris"
+status = "verified"
+evidence = "Linear provider inventory records the GCP project ACTIVE."
+note = "Billing and application deployment are not certified by this identity mapping."
+
+[[mappings]]
+kind = "slackChannel"
+identifier = "https://app.slack.com/client/T01B3C83PMK/C0BKSE66CD9"
+status = "verified"
+evidence = "Linear project metadata and provider inventory record channel C0BKSE66CD9."
+
+[[supersessions]]
+sequence = 1
+recordedAt = "2026-09-07T21:57:00Z"
+formerStatement = "Linear documents, the .github repository, primary GitHub Project issues, and the *-docs repository may be read as coequal organization-direction sources."
+replacementStatement = "The private owner-level .github repository is canonical for organization direction and resource mapping, while agents.md, interfaces, runtime sources, migrations, docs, Linear, and GitHub issues remain narrower authorities synchronized through explicit references and append-only history."
+reason = "Resolve ambiguous organization-level authority without erasing or subordinating specialized source contracts and safety policies."
+evidence = "DEN-3953 and sonus-auris/.github#38"
