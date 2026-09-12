@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.sonusauris.app/governance/organization-source-of-truth-pointer.v1.schema.json",
+  "title": "Sonus Auris organization source-of-truth mirror pointer",
+  "description": "Independent JSON Schema authority for non-canonical repository pointers to the Sonus Auris organization manifest.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "organization",
+    "authorityRepository",
+    "canonicalPath",
+    "canonicalRevision",
+    "observedAt",
+    "status",
+    "mirrorRepository",
+    "mirrorMode"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "ores.organization-source-of-truth-pointer.v1"
+    },
+    "organization": {
+      "const": "sonus-auris"
+    },
+    "authorityRepository": {
+      "const": "sonus-auris/.github"
+    },
+    "canonicalPath": {
+      "const": "governance/source-of-truth.toml"
+    },
+    "canonicalRevision": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "observedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["current", "stale", "blocked", "unverified"]
+    },
+    "canonicalDigest": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "mirrorRepository": {
+      "type": "string",
+      "pattern": "^sonus-auris/[A-Za-z0-9_.-]+$"
+    },
+    "mirrorMode": {
+      "const": "pointer"
+    },
+    "note": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}
