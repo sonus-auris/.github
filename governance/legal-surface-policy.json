@@ -1,0 +1,26 @@
+{
+  "schema": "ores.legal-surface-policy/v1",
+  "organization": "sonus-auris",
+  "docsRepository": "sonus-auris/sonus-auris-docs",
+  "patternSource": "ores-legal/ores-legal-docs",
+  "authorities": {
+    "typespec": "contracts/main.tsp",
+    "jsonSchema": "contracts/authored.schema.json",
+    "registry": "contracts/instances/LegalRegistry/valid/registry.json",
+    "runtimeManifest": "generated/legal-runtime-manifest.json"
+  },
+  "statusPolicy": {
+    "runtimeAdmitted": ["approved"],
+    "runtimeBlocked": ["draft", "review_required", "gap"]
+  },
+  "surfaces": [
+    {"surface":"sonus-auris-cli","requiredFamilies":["cli_tools","eula","software_license","privacy_data"],"acceptanceRequired":true},
+    {"surface":"sonus-auris-flutter","requiredFamilies":["end_user_runtime","eula","privacy_data","software_license"],"acceptanceRequired":true},
+    {"surface":"sonus-auris-desktop-app.rs","requiredFamilies":["end_user_runtime","eula","privacy_data","software_license"],"acceptanceRequired":true},
+    {"surface":"recording-pipeline","requiredFamilies":["privacy_data","security"],"acceptanceRequired":true},
+    {"surface":"evidence-and-export","requiredFamilies":["privacy_data","security","customer_services"],"acceptanceRequired":true},
+    {"surface":"hosted-services","requiredFamilies":["customer_services","service_level","service_objective","privacy_data","security"],"acceptanceRequired":false}
+  ],
+  "reviewTriggers": ["recording","microphone-permission","background-capture","bystanders","minors","speaker-inference","voice-embeddings","transcription","export-sharing","retention-deletion","consent-withdrawal","telemetry","billing","service-levels"],
+  "forbiddenGitContent": ["recordings","transcripts","voice-identifiers","executed-agreements","signatures","customer-evidence","credentials","privileged-communications","personnel-records"]
+}
