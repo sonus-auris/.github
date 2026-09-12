@@ -10,7 +10,6 @@ Preserve existing work and use reversible, reviewable operations.
 - **avoid git rebase in favor of git merge.**
 - Inspect `git status --short --branch` before making changes and again before publishing them.
 - When unexpected worktree changes, ambiguous ownership, or a potentially destructive requirement is encountered, stop and report the condition. Do not hide it with a stash, reset, cleanup, or history rewrite.
-
 ## Canonical organization links
 
 - GitHub organization: https://github.com/sonus-auris
@@ -127,3 +126,19 @@ work in progress, and `-A` is how that — plus secrets — gets committed by ac
 
 Never report work as landed while it is only on local disk. A change is done when
 it is committed, pushed, and open as a pull request; compiling is not landing.
+
+<!-- persistence-authority:begin -->
+## Persistence authority (TypeSpec + JSON Schema + Diesel + SeaORM)
+
+Product database contracts for this organization are owned in `*-lib-core`, not in `ORESoftware/k8s-libs-and-shared-defs`.
+
+Before changing schema, ORM adapters, or migrations, read [`docs/PERSISTENCE_AUTHORITY.md`](docs/PERSISTENCE_AUTHORITY.md).
+
+- **P0:** authored persistence TypeSpec (canonical AST)
+- **P1:** independently authored persistence JSON Schema (secondary-primary; release veto; never overwritten by TypeSpec emitters)
+- **Runtime:** Diesel + diesel-async primary; SeaORM secondary
+- **Apply:** generated release `desired.sql` via [declarative-migrations](https://github.com/declarative-migrations) (`dpm`); no DDL at API/web boot
+- **Fleet plan:** [general-migration-plan](https://linear.app/denman/document/general-migration-plan-f76fadd4cbb2) revision f
+
+Do not land new product SQL or ORM generation in shared-defs for this org.
+<!-- persistence-authority:end -->
