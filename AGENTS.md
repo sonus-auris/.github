@@ -45,7 +45,7 @@ Use read-only inspection and non-pruning synchronization such as `git status --s
 For every conflict:
 
 1. Read the merge base, both complete sides, surrounding implementation, tests, schemas, generated artifacts, documentation, deployment configuration, and public contracts—not only conflict markers.
-2. Inspect the affected path history and normally review 3–10 relevant prior commits on each side with `git log`, `git show`, and `git blame` where useful. This history window means 3–10 relevant prior commits when that history is available.
+2. Inspect the affected path history and normally review 3–10 relevant prior commits on each side with `git log`, `git show`, and `git blame` where useful. When history is available, inspect at least 3 and up to 10 relevant commits on each side.
 3. Review linked pull requests, issues, Linear work, related repositories in `sonus-auris`, and relevant external-organization repositories whenever behavior or contracts cross boundaries.
 4. Preserve compatible intent and invariants from both sides. Synthesize a conceptual merge; never resolve by accepting `ours` or `theirs` wholesale, nor by selecting `current` or `incoming` wholesale.
 5. Scan the complete tree for unresolved markers and run the applicable formatter, linter, unit, integration, contract, build, security, and end-to-end checks.
