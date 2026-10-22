@@ -1,5 +1,7 @@
 # sonus-auris organization defaults
 
+**Scripting rule:** [No Python scripts; use Rust](CONTRIBUTING.md#rust-first-scripts-and-automation). Python application code needs a separately documented exception.
+
 This public `.github` repository is the canonical home for **sonus-auris** organization profile content, community-health defaults, contribution guidance, issue and pull-request templates, reusable policy checks, and public agent-safety declarations.
 
 - GitHub organization: https://github.com/sonus-auris
